@@ -5,8 +5,8 @@
 using namespace std;
 
 
-Config::Config(string filename, string delimiter,
-	string comment)
+Config::Config(muduo::string filename, muduo::string delimiter,
+	muduo::string comment)
 	: delimiter_(delimiter), comment_(comment)
 {
 	// Construct a Config, getting keys and values from given file  
@@ -20,23 +20,23 @@ Config::Config(string filename, string delimiter,
 
 
 Config::Config()
-	: delimiter_(string(1, '=')), comment_(string(1, '#'))
+	: delimiter_(muduo::string(1, '=')), comment_(muduo::string(1, '#'))
 {
 	// Construct a Config without a file; empty  
 }
 
 
 
-bool Config::KeyExists(const string& key) const
+bool Config::KeyExists(const muduo::string& key) const
 {
 	// Indicate whether key is found  
-	mapci p = contents_.find(key);
+	auto p = contents_.find(key);
 	return (p != contents_.end());
 }
 
 
 /* static */
-void Config::Trim(string& inout_s)
+void Config::Trim(muduo::string& inout_s)
 {
 	// Remove leading and trailing whitespace  
 	static const char whitespace[] = " \n\t\v\r\f";
@@ -47,18 +47,16 @@ void Config::Trim(string& inout_s)
 
 std::ostream& operator<<(std::ostream& os, const Config& cf)
 {
-	// Save a Config to os  
-	for (Config::mapci p = cf.contents_.begin();
-		p != cf.contents_.end();
-		++p)
+	// Save a Config to os
+	/*for (auto p = cf.contents_.begin(); p != cf.contents_.end(); ++p)
 	{
 		os << p->first << " " << cf.delimiter_ << " ";
 		os << p->second << std::endl;
-	}
+	}*/
 	return os;
 }
 
-void Config::Remove(const string& key)
+void Config::Remove(const muduo::string& key)
 {
 	// Remove key and its value  
 	contents_.erase(contents_.find(key));
@@ -69,17 +67,17 @@ std::istream& operator>>(std::istream& is, Config& cf)
 {
 	// Load a Config from is  
 	// Read in keys and values, keeping internal whitespace  
-	typedef string::size_type pos;
-	const string& delim = cf.delimiter_;  // separator  
-	const string& comm = cf.comment_;    // comment  
+	typedef muduo::string::size_type pos;
+	const muduo::string& delim = cf.delimiter_;  // separator  
+	const muduo::string& comm = cf.comment_;    // comment  
 	const pos skip = delim.length();        // length of separator  
 
-	string nextline = "";  // might need to read ahead to see where value ends  
+	muduo::string nextline = "";  // might need to read ahead to see where value ends  
 
 	while (is || nextline.length() > 0)
 	{
 		// Read an entire line at a time  
-		string line;
+		muduo::string line;
 		if (nextline.length() > 0)
 		{
 			line = nextline;  // we read ahead; use it now  
@@ -95,10 +93,10 @@ std::istream& operator>>(std::istream& is, Config& cf)
 
 		// Parse the line if it contains a delimiter  
 		pos delimPos = line.find(delim);
-		if (delimPos < string::npos)
+		if (delimPos < muduo::string::npos)
 		{
 			// Extract the key  
-			string key = line.substr(0, delimPos);
+			muduo::string key = line.substr(0, delimPos);
 			line.replace(0, delimPos + skip, "");
 
 			// See if value continues on the next line  
@@ -110,12 +108,12 @@ std::istream& operator>>(std::istream& is, Config& cf)
 				std::getline(is, nextline);
 				terminate = true;
 
-				string nlcopy = nextline;
+				muduo::string nlcopy = nextline;
 				Config::Trim(nlcopy);
 				if (nlcopy == "") continue;
 
 				nextline = nextline.substr(0, nextline.find(comm));
-				if (nextline.find(delim) != string::npos)
+				if (nextline.find(delim) != muduo::string::npos)
 					continue;
 
 				nlcopy = nextline;
@@ -134,7 +132,7 @@ std::istream& operator>>(std::istream& is, Config& cf)
 
 	return is;
 }
-bool Config::FileExist(std::string filename)
+bool Config::FileExist(muduo::string filename)
 {
 	bool exist = false;
 	std::ifstream in(filename.c_str());
@@ -143,8 +141,8 @@ bool Config::FileExist(std::string filename)
 	return exist;
 }
 
-void Config::ReadFile(string filename, string delimiter,
-	string comment)
+void Config::ReadFile(muduo::string filename, muduo::string delimiter,
+	muduo::string comment)
 {
 	delimiter_ = delimiter;
 	comment_ = comment;

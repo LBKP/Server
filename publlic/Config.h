@@ -1,10 +1,11 @@
 #pragma once  
 
-#include <string>  
+#include <muduo/base/Types.h>  
 #include <map>  
 #include <iostream>  
 #include <fstream>  
 #include <sstream>  
+#include <algorithm>
 
 
 /*
@@ -14,41 +15,41 @@
 class Config {
 	// Data  
 protected:
-	std::string delimiter_;  //separator between key and value  
-	std::string comment_;    //separator between value and comments  
-	std::map<std::string, std::string> contents_;  //extracted keys and values  
+	muduo::string delimiter_;  //separator between key and value  
+	muduo::string comment_;    //separator between value and comments  
+	std::map<muduo::string, muduo::string> contents_;  //extracted keys and values  
 
 	// Methods  
 public:
 
-	Config(std::string filename, std::string delimiter = "=", std::string comment = "#");
+	Config(muduo::string filename, muduo::string delimiter = "=", muduo::string comment = "#");
 	Config();
 	//Search for key and read value or optional default value, call as read<T>  
-	template<class T> T Read(const std::string& in_key) const;  
-	template<class T> T Read(const std::string& in_key, const T& in_value) const;
-	template<class T> bool ReadInto(T& out_var, const std::string& in_key) const;
+	template<class T> T Read(const muduo::string& in_key) const;
+	template<class T> T Read(const muduo::string& in_key, const T& in_value) const;
+	template<class T> bool ReadInto(T& out_var, const muduo::string& in_key) const;
 	template<class T>
-	bool ReadInto(T& out_var, const std::string& in_key, const T& in_value) const;
-	bool FileExist(std::string filename);
-	void ReadFile(std::string filename, std::string delimiter = "=", std::string comment = "#");
+	bool ReadInto(T& out_var, const muduo::string& in_key, const T& in_value) const;
+	bool FileExist(muduo::string filename);
+	void ReadFile(muduo::string filename, muduo::string delimiter = "=", muduo::string comment = "#");
 
 	// Check whether key exists in configuration  
-	bool KeyExists(const std::string& in_key) const;
+	bool KeyExists(const muduo::string& in_key) const;
 
 	// Modify keys and values  
-	template<class T> void Add(const std::string& in_key, const T& in_value);
-	void Remove(const std::string& in_key);
+	template<class T> void Add(const muduo::string& in_key, const T& in_value);
+	void Remove(const muduo::string& in_key);
 
 	// Check or change configuration syntax  
-	std::string GetDelimiter() const { return delimiter_; }
-	std::string GetComment() const { return comment_; }
-	std::string SetDelimiter(const std::string& in_s)
+	muduo::string GetDelimiter() const { return delimiter_; }
+	muduo::string GetComment() const { return comment_; }
+	muduo::string SetDelimiter(const muduo::string& in_s)
 	{
-		std::string old = delimiter_;  delimiter_ = in_s;  return old;
+		muduo::string old = delimiter_;  delimiter_ = in_s;  return old;
 	}
-	std::string SetComment(const std::string& in_s)
+	muduo::string SetComment(const muduo::string& in_s)
 	{
-		std::string old = comment_;  comment_ = in_s;  return old;
+		muduo::string old = comment_;  comment_ = in_s;  return old;
 	}
 
 	// Write or read configuration  
@@ -56,21 +57,21 @@ public:
 	friend std::istream& operator>>(std::istream& is, Config& cf);
 
 protected:
-	template<class T> static std::string T_as_string(const T& t);
-	template<class T> static T string_as_T(const std::string& s);
-	static void Trim(std::string& inout_s);
+	template<class T> static muduo::string T_as_string(const T& t);
+	template<class T> static T string_as_T(const muduo::string& s);
+	static void Trim(muduo::string& inout_s);
 
 
 	// Exception types  
 public:
 	struct File_not_found {
-		std::string filename;
-		File_not_found(const std::string& filename_ = std::string())
+		muduo::string filename;
+		File_not_found(const muduo::string& filename_ = muduo::string())
 			: filename(filename_) {}
 	};
 	struct Key_not_found {  // thrown only by T read(key) variant of read()  
-		std::string key;
-		Key_not_found(const std::string& key_ = std::string())
+		muduo::string key;
+		Key_not_found(const muduo::string& key_ = muduo::string())
 			: key(key_) {}
 	};
 };
@@ -78,24 +79,24 @@ public:
 
 /* static */
 template<class T>
-std::string Config::T_as_string(const T& t)
+muduo::string Config::T_as_string(const T& t)
 {
 	// Convert from a T to a string  
 	// Type T must support << operator  
 	std::ostringstream ost;
 	ost << t;
-	return ost.str();
+	return muduo::string(ost.str().c_str());
 }
 
 
 /* static */
 template<class T>
-T Config::string_as_T(const std::string& s)
+T Config::string_as_T(const muduo::string& s)
 {
 	// Convert from a string to a T  
 	// Type T must support >> operator  
 	T t;
-	std::string a;
+	muduo::string a;
 	std::istringstream ist(s);
 	ist >> t;
 	return t;
@@ -104,7 +105,7 @@ T Config::string_as_T(const std::string& s)
 
 /* static */
 template<>
-inline std::string Config::string_as_T<std::string>(const std::string& s)
+inline muduo::string Config::string_as_T<muduo::string>(const muduo::string& s)
 {
 	// Convert from a string to a string  
 	// In other words, do nothing  
@@ -114,51 +115,50 @@ inline std::string Config::string_as_T<std::string>(const std::string& s)
 
 /* static */
 template<>
-inline bool Config::string_as_T<bool>(const std::string& s)
+inline bool Config::string_as_T<bool>(const muduo::string& s)
 {
 	// Convert from a string to a bool  
 	// Interpret "false", "F", "no", "n", "0" as false  
 	// Interpret "true", "T", "yes", "y", "1", "-1", or anything else as true  
 	bool b = true;
-	std::string sup = s;
-	for (std::string::iterator p = sup.begin(); p != sup.end(); ++p)
-		*p = toupper(*p);  // make string all caps  
-	if (sup == std::string("FALSE") || sup == std::string("F") ||
-		sup == std::string("NO") || sup == std::string("N") ||
-		sup == std::string("0") || sup == std::string("NONE"))
+	muduo::string sup = s;
+	std::transform(sup.begin(), sup.end(), sup.begin(), ::toupper);
+	if (sup == muduo::string("FALSE") || sup == muduo::string("F") ||
+		sup == muduo::string("NO") || sup == muduo::string("N") ||
+		sup == muduo::string("0") || sup == muduo::string("NONE"))
 		b = false;
 	return b;
 }
 
 
 template<class T>
-T Config::Read(const std::string& key) const
+T Config::Read(const muduo::string& key) const
 {
 	// Read the value corresponding to key  
-	mapci p = contents_.find(key);
+	auto p = contents_.find(key);
 	if (p == contents_.end()) throw Key_not_found(key);
 	return string_as_T<T>(p->second);
 }
 
 
 template<class T>
-T Config::Read(const std::string& key, const T& value) const
+T Config::Read(const muduo::string& key, const T& value) const
 {
 	// Return the value corresponding to key or given default value  
 	// if key is not found  
-	mapci p = contents_.find(key);
+	auto p = contents_.find(key);
 	if (p == contents_.end()) return value;
 	return string_as_T<T>(p->second);
 }
 
 
 template<class T>
-bool Config::ReadInto(T& var, const std::string& key) const
+bool Config::ReadInto(T& var, const muduo::string& key) const
 {
 	// Get the value corresponding to key and store in var  
 	// Return true if key is found  
 	// Otherwise leave var untouched  
-	mapci p = contents_.find(key);
+	auto p = contents_.find(key);
 	bool found = (p != contents_.end());
 	if (found) var = string_as_T<T>(p->second);
 	return found;
@@ -166,12 +166,12 @@ bool Config::ReadInto(T& var, const std::string& key) const
 
 
 template<class T>
-bool Config::ReadInto(T& var, const std::string& key, const T& value) const
+bool Config::ReadInto(T& var, const muduo::string& key, const T& value) const
 {
 	// Get the value corresponding to key and store in var  
 	// Return true if key is found  
 	// Otherwise set var to given default  
-	mapci p = contents_.find(key);
+	auto p = contents_.find(key);
 	bool found = (p != contents_.end());
 	if (found)
 		var = string_as_T<T>(p->second);
@@ -182,13 +182,13 @@ bool Config::ReadInto(T& var, const std::string& key, const T& value) const
 
 
 template<class T>
-void Config::Add(const std::string& in_key, const T& value)
+void Config::Add(const muduo::string& in_key, const T& value)
 {
 	// Add a key with given value  
-	std::string v = T_as_string(value);
-	std::string key = in_key;
-	trim(key);
-	trim(v);
+	muduo::string v = T_as_string(value);
+	muduo::string key = in_key;
+	//trim(key);
+	//trim(v);
 	contents_[key] = v;
 	return;
 }

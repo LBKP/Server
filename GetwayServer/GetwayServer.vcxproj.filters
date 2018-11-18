@@ -4,16 +4,25 @@
     <Filter Include="publlic">
       <UniqueIdentifier>{fd20ae65-c117-4000-899a-69b4afe68390}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Server">
+      <UniqueIdentifier>{14bd479b-afba-4e23-963c-e625fa9d69ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="..\publlic\Config.cpp">
       <Filter>publlic</Filter>
     </ClCompile>
+    <ClCompile Include="Server\GetwayServer.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\publlic\Config.h">
       <Filter>publlic</Filter>
+    </ClInclude>
+    <ClInclude Include="Server\GetwayServer.h">
+      <Filter>Server</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

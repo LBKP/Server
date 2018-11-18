@@ -59,9 +59,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
+    <UseOfStl>libstdc++_static</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
+    <UseOfStl>libstdc++_static</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
@@ -75,14 +77,22 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\竺沛\source\repos\老表快跑\muduo;$(IncludePath)</IncludePath>
+    <IncludePath>/home/ubuntu/build/release-install-cpp17/include;$(IncludePath)</IncludePath>
+    <ProjectPublicIncludePath>/home/ubuntu/build/release-install-cpp17/include</ProjectPublicIncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>/home/ubuntu/build/release-install-cpp17/include;$(IncludePath)</IncludePath>
+    <LibraryPath>/home/ubuntu/build/release-install-cpp17/lib</LibraryPath>
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="..\publlic\Config.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Server\GetwayServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\publlic\Config.h" />
+    <ClInclude Include="Server\GetwayServer.h" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -93,6 +103,23 @@
     <ClCompile>
       <TreatWarningAsError>true</TreatWarningAsError>
       <CppLanguageStandard>c++17</CppLanguageStandard>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>ssl;muduo_net;muduo_wss;muduo_base;pthread</LibraryDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(Link.AdditionalLibraryDirectories);/home/ubuntu/build/release-install-cpp17/lib</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/usr/local/lib/libcrypto.so.1.1" %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Link>
+      <LibraryDependencies>muduo_base;muduo_net;pthread;ssl;</LibraryDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);/usr/local/lib/libcrypto.so</AdditionalDependencies>
+    </Link>
+    <ClCompile>
+      <CppLanguageStandard>c++17</CppLanguageStandard>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>C:\Users\竺沛\source\repos\老表快跑\muduo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
