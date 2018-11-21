@@ -15,8 +15,10 @@ public:
 		muduo::net::ssl::sslAttrivutesPtr sslAttr);
 	~GetwayServer();
 
+	void start();
+
 private:
-	//muduo::net::wss::WebSocketServer websocketServer_;
-	//muduo::net::TcpServer tcpServer_;
+	muduo::net::wss::WebSocketServer websocketServer_;
+	muduo::net::TcpServer tcpServer_;
 
 };
