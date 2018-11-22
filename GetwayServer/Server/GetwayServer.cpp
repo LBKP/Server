@@ -15,6 +15,7 @@ GetwayServer::~GetwayServer()
 
 void GetwayServer::start()
 {
+	webswebsocketServer_.setThreadNum(2);
 	websocketServer_.start();
 	tcpServer_.start();
 }

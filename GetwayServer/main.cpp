@@ -2,7 +2,6 @@
 #include<dirent.h>
 #include <sys/stat.h>
 
-
 #include<functional>
 
 #include<muduo/base/Logging.h>
@@ -22,8 +21,8 @@ void asyncOutput(const char* msg, int len)
 #ifdef DEBUG
 	fwrite(msg, 1, len, stdout);
 #endif // DEBUG
-
 }
+
 int main(int argc, char** argv)
 {
 	bool isDaemon = false;
@@ -48,7 +47,7 @@ int main(int argc, char** argv)
 	}
 
 	if (isDaemon)
-		daemon(1, 0);
+		daemon(1, 0);//1 current dir is work dir;0 fd 0, 1, 2to /dev/null
 
 	Config config("./Getway.cfg");
 
