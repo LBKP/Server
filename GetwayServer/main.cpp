@@ -1,16 +1,19 @@
-#include<unistd.h>
-#include<dirent.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <dirent.h>
+#include <sys/file.h>
+#include <sys/types.h>
 #include <sys/stat.h>
 
-#include<functional>
+#include <functional>
 
-#include<muduo/base/Logging.h>
-#include<muduo/base/AsyncLogging.h>
-#include<muduo/base/Types.h>
-#include<muduo/net/EventLoop.h>
+#include <muduo/base/Logging.h>
+#include <muduo/base/AsyncLogging.h>
+#include <muduo/base/Types.h>
+#include <muduo/net/EventLoop.h>
 
-#include"../publlic/Config.h"
-#include"Server/GetwayServer.h"
+#include "../publlic/Config.h"
+#include "Server/GetwayServer.h"
 
 using namespace std;
 #define DEBUG
@@ -25,11 +28,30 @@ void asyncOutput(const char* msg, int len)
 
 int main(int argc, char** argv)
 {
+	//set just start once
+	int lock_file = open("/tmp/GetwayServer.lock", O_CREAT | O_RDWR, 0666);
+	int rc = flock(lock_file, LOCK_EX | LOCK_NB);
+	if(rc)
+	{
+		if(EWOULDBLOCK == errno)
+		{
+			LOG_FATAL << "This program has started";
+		}
+	}
+	else
+	{
+		char buffer[64];
+		sprintf(buffer, "pid:%d\n", getpid());
+		write(lock_file, buffer, strlen(buffer));
+		close(lock_file); 
+	}
+
+	//check option
 	bool isDaemon = false;
 	int ch;
-	while ((ch = getopt(argc, argv, "dv")) != -1)
+	while((ch = getopt(argc, argv, "dv")) != -1)
 	{
-		switch (ch)
+		switch(ch)
 		{
 		case 'd':
 			isDaemon = true;
@@ -46,7 +68,7 @@ int main(int argc, char** argv)
 		}
 	}
 
-	if (isDaemon)
+	if(isDaemon)
 		daemon(1, 0);//1 current dir is work dir;0 fd 0, 1, 2to /dev/null
 
 	Config config("./Getway.cfg");
@@ -54,9 +76,9 @@ int main(int argc, char** argv)
 	//init the logger
 	muduo::string strLogFileFullPath = config.Read<muduo::string>("LogDir");
 	auto dir = opendir(strLogFileFullPath.c_str());
-	if (dir == nullptr)
+	if(dir == nullptr)
 	{
-		if (mkdir(strLogFileFullPath.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) != 0)//chmod 777
+		if(mkdir(strLogFileFullPath.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) != 0)//chmod 777
 		{
 			LOG_FATAL << "make dir error error no" << errno << "  " << strerror(errno);
 		}

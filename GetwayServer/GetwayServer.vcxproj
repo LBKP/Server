@@ -87,11 +87,13 @@
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="..\publlic\Config.cpp" />
+    <ClCompile Include="Codec.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Server\GetwayServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\publlic\Config.h" />
+    <ClInclude Include="Codec.h" />
     <ClInclude Include="Server\GetwayServer.h" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
