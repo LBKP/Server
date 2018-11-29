@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <map>
+#include <unordered_map>
 #include <queue>
 
 #include <muduo/net/websocket/WebSocketServer.h>
@@ -29,7 +29,7 @@ private:
 private:
 	muduo::net::wss::WebSocketServer websocketServer_;
 	muduo::net::TcpServer tcpServer_;
-	std::map<int, muduo::net::TcpConnectionPtr> Conections_;
+	std::unordered_map<int, muduo::net::TcpConnectionPtr> Conections_;
 	muduo::MutexLock mutex_;
 	int maxId_; 
 	std::queue<int> priorIds_;
