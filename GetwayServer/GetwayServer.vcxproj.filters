@@ -16,7 +16,9 @@
     <ClCompile Include="Server\GetwayServer.cpp">
       <Filter>Server</Filter>
     </ClCompile>
-    <ClCompile Include="Codec.cpp" />
+    <ClCompile Include="Server\Codec.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\publlic\Config.h">
@@ -25,6 +27,8 @@
     <ClInclude Include="Server\GetwayServer.h">
       <Filter>Server</Filter>
     </ClInclude>
-    <ClInclude Include="Codec.h" />
+    <ClInclude Include="Server\Codec.h">
+      <Filter>Server</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
