@@ -4,6 +4,10 @@
 #include <muduo/net/EventLoop.h>
 #include <muduo/net/TcpClient.h>
 
+#include "MessageRegister.h"
+#include "../../publlic/Codec.h"
+#include "../../publlic/MessageDispatcher.h"
+
 
 /****************************************************************
 * Author		£ºZhuPei.pur@outlook.com
@@ -22,9 +26,13 @@ public:
 		const muduo::net::InetAddress& serverAddr,
 		const muduo::string& nameArg);
 	~LoginServer();
-
+	void started();
+private:
+	
 private:
 	muduo::net::TcpClient connection_;
-	muduo::net::EventLoop loop_;
+	muduo::net::EventLoop* loop_;
+	MessageRegister dispatcher_;
+	ProtobufCodec codec_;
 };
 

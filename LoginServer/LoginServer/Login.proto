@@ -1,0 +1,23 @@
+syntax = "proto3";
+package LOGIN;
+
+message NewConnection_GL
+{
+	int32 hash = 1;
+}
+
+message ClientLogin_CL
+{
+	int32  CODE_SIZE = 1;
+}
+
+message LoginState_LC
+{
+	enum LoginState
+	{
+		SUCCESS = 0;
+		ERROR = 1;
+	}
+	LoginState state = 1;
+	int32 sessionId = 2;
+}

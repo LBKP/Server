@@ -15,6 +15,14 @@
     <ClCompile Include="LoginServer\LoginServer.cpp">
       <Filter>LoginServer</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\publlic\Codec.cpp">
+      <Filter>publlic</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginServer\MessageRegister.h">
+      <Filter>LoginServer</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginServer\MessageRegister.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\publlic\Config.h">
@@ -23,5 +31,17 @@
     <ClInclude Include="LoginServer\LoginServer.h">
       <Filter>LoginServer</Filter>
     </ClInclude>
+    <ClInclude Include="..\publlic\Codec.h">
+      <Filter>publlic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\publlic\MessageDispatcher.h">
+      <Filter>publlic</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+    <None Include="LoginServer\Login.proto">
+      <Filter>LoginServer</Filter>
+    </None>
   </ItemGroup>
 </Project>

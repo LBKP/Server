@@ -75,13 +75,22 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
+    <ClCompile Include="..\publlic\Codec.cpp" />
     <ClCompile Include="..\publlic\Config.cpp" />
     <ClCompile Include="LoginServer\LoginServer.cpp" />
+    <ClCompile Include="LoginServer\MessageRegister.cpp" />
+    <ClCompile Include="LoginServer\MessageRegister.h" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\publlic\Codec.h" />
     <ClInclude Include="..\publlic\Config.h" />
+    <ClInclude Include="..\publlic\MessageDispatcher.h" />
     <ClInclude Include="LoginServer\LoginServer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+    <None Include="LoginServer\Login.proto" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
