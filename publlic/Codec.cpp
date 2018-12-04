@@ -155,11 +155,11 @@ MessagePtr ProtobufCodec::parse(const char* buf, int len, ErrorCode* error)
             int32_t dataLen = len - nameLen - 2*kHeaderLen;
             if (message->ParseFromArray(data, dataLen))
             {
-            *error = kNoError;
+                *error = kNoError;
             }
             else
             {
-            *error = kParseError;
+                *error = kParseError;
             }
         }
         else
