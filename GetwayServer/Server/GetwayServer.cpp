@@ -2,20 +2,36 @@
 
 #include <any>
 
-GetwayServer::GetwayServer(muduo::net::EventLoop* loop,
-	const muduo::net::InetAddress websocketAddr,
-	const muduo::net::InetAddress TcpAddr,
-	muduo::net::ssl::sslAttrivutesPtr sslAttr)
-	:websocketServer_(loop, websocketAddr, "WebsocketServer", muduo::net::TcpServer::kReusePort, sslAttr),
-	tcpServer_(loop, TcpAddr, "TcpServer", muduo::net::TcpServer::kReusePort),
-	loop_(loop),
-	maxId_(100)
-{
-	websocketServer_.setConnectionCallback(std::bind(&GetwayServer::onClientConnection, this, std::placeholders::_1));
-	websocketServer_.setMessageCallback(std::bind(&GetwayServer::onClientMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-	tcpServer_.setConnectionCallback(std::bind(&GetwayServer::onServerConnection, this, std::placeholders::_1));
-	tcpServer_.setMessageCallback(std::bind(&GetwayServer::onServerMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+using std::placeholders;
 
+GetwayServer::GetwayServer(muduo::net::EventLoop *loop,
+						   const muduo::net::InetAddress websocketAddr,
+						   const muduo::net::InetAddress TcpAddr,
+						   muduo::net::ssl::sslAttrivutesPtr sslAttr)
+	: websocketServer_(loop, websocketAddr,
+					   "WebsocketServer",
+					   muduo::net::TcpServer::kReusePort,
+					   sslAttr),
+	  tcpServer_(loop,
+				 TcpAddr, "TcpServer",
+				 muduo::net::TcpServer::kReusePort),
+	  loop_(loop),
+	  maxId_(100),
+	  dispatcher_(std::bind(onUnKnownMessage, this, _1, _2, _3)),
+	  codec_(
+		  std::bind(ProtobufDispatcher::onProtobufMessage, &dispatcher_, _1, _2, _3))
+{
+	websocketServer_.setConnectionCallback(
+		std::bind(&GetwayServer::onClientConnection, this, _1));
+	websocketServer_.setMessageCallback(
+		std::bind(&GetwayServer::onClientMessage, this, _1, _2, _3));
+	tcpServer_.setConnectionCallback(
+		std::bind(&GetwayServer::onServerConnection, this, _1));
+	tcpServer_.setMessageCallback(
+		std::bind(&GetwayServer::onServerMessage, this, _1, _2, _3));
+
+	dispatcher_.registerMessageCallback<Getway::ServerRegister>(
+		std::bind(onServerRegister, this, _1, _2, _3))
 }
 
 GetwayServer::~GetwayServer()
@@ -30,8 +46,7 @@ void GetwayServer::start()
 	tcpServer_.start();
 }
 
-
-void GetwayServer::onClientConnection(const muduo::net::TcpConnectionPtr & conn)
+void GetwayServer::onClientConnection(const muduo::net::TcpConnectionPtr &conn)
 {
 	int hash;
 	if (conn->connected())
@@ -62,16 +77,16 @@ void GetwayServer::onClientConnection(const muduo::net::TcpConnectionPtr & conn)
 			Conections_.erase(Conections_.find(hash));
 		}
 		priorIds_.push(hash);
-		conn->send(0);//Fix this, need to range a login server to client
+		conn->send(0); //Fix this, need to range a login server to client
 		LOG_INFO << "User " << conn->getTcpInfoString() << " Disconnected and this hash is " << hash;
 	}
 }
 
-void GetwayServer::onClientMessage(const muduo::net::TcpConnectionPtr &, muduo::net::Buffer * buf, muduo::Timestamp receiveTime)
+void GetwayServer::onClientMessage(const muduo::net::TcpConnectionPtr &, muduo::net::Buffer *buf, muduo::Timestamp receiveTime)
 {
 }
 
-void GetwayServer::onServerConnection(const muduo::net::TcpConnectionPtr & conn)
+void GetwayServer::onServerConnection(const muduo::net::TcpConnectionPtr &conn)
 {
 	if (conn->connected())
 	{
@@ -84,18 +99,17 @@ void GetwayServer::onServerConnection(const muduo::net::TcpConnectionPtr & conn)
 		muduo::MutexLockGuard lock(mutex_);
 		Conections_.erase(Conections_.find(std::any_cast<int>(conn->getContext())));
 	}
-
 }
 
-void GetwayServer::onServerMessage(const muduo::net::TcpConnectionPtr & conn, muduo::net::Buffer * buf, muduo::Timestamp receiveTime)
+void GetwayServer::onServerMessage(const muduo::net::TcpConnectionPtr &conn, muduo::net::Buffer *buf, muduo::Timestamp receiveTime)
 {
 	try
 	{
 		int hash = std::any_cast<int>(conn->getContext());
 		parseServiceMessage(hash);
 	}
-	catch (const std::bad_any_cast&)
-	{//server need register
+	catch (const std::bad_any_cast &)
+	{ //server need register
 		int8_t server = buf->peekInt8();
 		if (server >= serverType::ErrorServer)
 		{
@@ -107,7 +121,7 @@ void GetwayServer::onServerMessage(const muduo::net::TcpConnectionPtr & conn, mu
 		for (int hash = server * 10; hash < server * 100; hash++)
 		{
 			if (Conections_.find(hash) == Conections_.end())
-			{//find a unused hash
+			{ //find a unused hash
 				{
 					muduo::MutexLockGuard lock(mutex_);
 					Conections_[hash] = conn;
@@ -127,7 +141,6 @@ void GetwayServer::onServerMessage(const muduo::net::TcpConnectionPtr & conn, mu
 			onServerMessage(conn, buf, receiveTime);
 		}
 	}
-
 }
 
 void GetwayServer::broadcastNewServerConnected(int hash)
@@ -149,5 +162,3 @@ void GetwayServer::parseClientMessage(int hash)
 void GetwayServer::parseServiceMessage(int hash)
 {
 }
-
-

@@ -1,10 +1,10 @@
 #pragma once
 /****************************************************************
-* Author		£ºZhuPei.pur@outlook.com
-* Create		£º2018/12/1
-* Version		£º1.0.0.1
-* * Description	£ºretransmission all message send by client amd server
-* * History		£º
+* Author		ï¿½ï¿½ZhuPei.pur@outlook.com
+* Create		ï¿½ï¿½2018/12/1
+* Version		ï¿½ï¿½1.0.0.1
+* * Description	ï¿½ï¿½retransmission all message send by client amd server
+* * History		ï¿½ï¿½
 ******************************************************************
 * Copyright ZhuPei 2018 All rights reserved*
 *****************************************************************/
@@ -20,12 +20,9 @@
 #include <muduo/base/Types.h>
 #include <muduo/base/Mutex.h>
 
-enum serverType :char
-{
-	LoginServer,
-	GameLobby,
-	ErrorServer = 10
-};
+#include "Getway.pb.h"
+#include "../../publlic/Codec.h"
+#include "../../publlic/MessageDispatcher.h"
 
 enum ErrorCode
 {
@@ -55,9 +52,13 @@ public:
 private:
 	//Callback's
 	void onClientConnection(const muduo::net::TcpConnectionPtr& conn);
-	void onClientMessage(const muduo::net::TcpConnectionPtr&, muduo::net::Buffer* buf, muduo::Timestamp receiveTime);
+	void onClientMessage(const muduo::net::TcpConnectionPtr&, 
+							muduo::net::Buffer* buf, 
+							muduo::Timestamp receiveTime);
 	void onServerConnection(const muduo::net::TcpConnectionPtr& conn);
-	void onServerMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net::Buffer* buf, muduo::Timestamp receiveTime);
+	void onServerMessage(const muduo::net::TcpConnectionPtr& conn,
+						muduo::net::Buffer* buf,
+						muduo::Timestamp receiveTime);
 	//notify service's change
 	void broadcastNewServerConnected(int hash);
 	void broadcastServerDisconnected(int hash);
@@ -66,6 +67,12 @@ private:
 	//parse message
 	void parseClientMessage(int hash);
 	void parseServiceMessage(int hash);
+
+	//send to getway's message
+	void onServerRegister(int hash, 
+						const std::shared_ptr<Getway::ServerRegister>& message, 
+						muduo::Timestamp);
+	void onUnKnownMessage(int hash, const MessagePtr&message, muduo::Timestamp);
 private:
 	//recive all connection
 	muduo::net::wss::WebSocketServer websocketServer_;
@@ -78,4 +85,7 @@ private:
 	int maxId_;
 	std::queue<int> priorIds_;
 
+	//message handle
+	ProtobufDispatcher dispatcher_;
+	ProtobufCodec codec_;
 };

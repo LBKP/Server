@@ -6,9 +6,15 @@ message NewConnection_GL
 	int32 hash = 1;
 }
 
+message ClientNeedLogin_LC
+{
+
+}
+
 message ClientLogin_CL
 {
-	int32  CODE_SIZE = 1;
+	optional int32  Code = 1;
+	optional string SessionId = 2;
 }
 
 message LoginState_LC
@@ -16,8 +22,10 @@ message LoginState_LC
 	enum LoginState
 	{
 		SUCCESS = 0;
-		ERROR = 1;
+		CODE_ERROR = 1;
+		BUSY_ERROR = 2;
+		SESSION_ERROR = 3;
 	}
-	LoginState state = 1;
-	int32 sessionId = 2;
+	LoginState State = 1;
+	optional int32 SessionId = 2;
 }
