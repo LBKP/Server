@@ -2,7 +2,7 @@
 
 #include <any>
 
-using std::placeholders;
+using namespace std::placeholders;
 
 GetwayServer::GetwayServer(muduo::net::EventLoop *loop,
 						   const muduo::net::InetAddress websocketAddr,
@@ -17,9 +17,8 @@ GetwayServer::GetwayServer(muduo::net::EventLoop *loop,
 				 muduo::net::TcpServer::kReusePort),
 	  loop_(loop),
 	  maxId_(100),
-	  dispatcher_(std::bind(onUnKnownMessage, this, _1, _2, _3)),
-	  codec_(
-		  std::bind(ProtobufDispatcher::onProtobufMessage, &dispatcher_, _1, _2, _3))
+	  dispatcher_(std::bind(&GetwayServer::onUnKnownMessage, this, _1, _2, _3)),
+	  codec_(std::bind(&ProtobufDispatcher::onProtobufMessage, &dispatcher_, _1, _2, _3))
 {
 	websocketServer_.setConnectionCallback(
 		std::bind(&GetwayServer::onClientConnection, this, _1));
@@ -31,7 +30,7 @@ GetwayServer::GetwayServer(muduo::net::EventLoop *loop,
 		std::bind(&GetwayServer::onServerMessage, this, _1, _2, _3));
 
 	dispatcher_.registerMessageCallback<Getway::ServerRegister>(
-		std::bind(onServerRegister, this, _1, _2, _3))
+		std::bind(&GetwayServer::onServerRegister, this, _1, _2, _3));
 }
 
 GetwayServer::~GetwayServer()
@@ -67,6 +66,7 @@ void GetwayServer::onClientConnection(const muduo::net::TcpConnectionPtr &conn)
 			Conections_[hash] = conn;
 		}
 		conn->setContext(hash);
+		codec_.send();
 		LOG_INFO << "User " << conn->getTcpInfoString() << " connected and this hash is " << hash;
 	}
 	else
@@ -111,12 +111,12 @@ void GetwayServer::onServerMessage(const muduo::net::TcpConnectionPtr &conn, mud
 	catch (const std::bad_any_cast &)
 	{ //server need register
 		int8_t server = buf->peekInt8();
-		if (server >= serverType::ErrorServer)
+		/*if (server >= serverType::ErrorServer)
 		{
 			conn->forceClose();
 			LOG_ERROR << "This server can not recognition , type is " << server;
 			return;
-		}
+		}*/
 		buf->retrieve(1);
 		for (int hash = server * 10; hash < server * 100; hash++)
 		{
@@ -128,7 +128,7 @@ void GetwayServer::onServerMessage(const muduo::net::TcpConnectionPtr &conn, mud
 				}
 				conn->setContext(hash);
 				broadcastNewServerConnected(hash);
-				if (server == serverType::GameLobby)
+				if (server == Getway::LOBBY)
 				{
 					sendAllConnectedServer(hash);
 				}
@@ -160,5 +160,13 @@ void GetwayServer::parseClientMessage(int hash)
 }
 
 void GetwayServer::parseServiceMessage(int hash)
+{
+}
+
+void GetwayServer::onServerRegister(int hash, const std::shared_ptr<Getway::ServerRegister>& message, muduo::Timestamp)
+{
+}
+
+void GetwayServer::onUnKnownMessage(int hash, const MessagePtr & message, muduo::Timestamp)
 {
 }

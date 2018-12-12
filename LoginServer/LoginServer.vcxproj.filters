@@ -22,7 +22,9 @@
     <ClCompile Include="LoginServer\MessageRegister.h">
       <Filter>LoginServer</Filter>
     </ClCompile>
-    <ClCompile Include="LoginServer\MessageRegister.cpp" />
+    <ClCompile Include="LoginServer\MessageRegister.cpp">
+      <Filter>publlic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\publlic\Config.h">

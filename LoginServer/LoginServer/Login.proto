@@ -13,8 +13,8 @@ message ClientNeedLogin_LC
 
 message ClientLogin_CL
 {
-	optional int32  Code = 1;
-	optional string SessionId = 2;
+	int32  Code = 1;
+	string SessionId = 2;
 }
 
 message LoginState_LC
@@ -27,5 +27,5 @@ message LoginState_LC
 		SESSION_ERROR = 3;
 	}
 	LoginState State = 1;
-	optional int32 SessionId = 2;
+	int32 SessionId = 2;
 }

@@ -16,8 +16,11 @@
     <ClCompile Include="Server\GetwayServer.cpp">
       <Filter>Server</Filter>
     </ClCompile>
-    <ClCompile Include="Server\Codec.cpp">
+    <ClCompile Include="Server\Getway.pb.cc">
       <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\publlic\Codec.cpp">
+      <Filter>publlic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -27,8 +30,19 @@
     <ClInclude Include="Server\GetwayServer.h">
       <Filter>Server</Filter>
     </ClInclude>
-    <ClInclude Include="Server\Codec.h">
+    <ClInclude Include="Server\Getway.pb.h">
       <Filter>Server</Filter>
     </ClInclude>
+    <ClInclude Include="..\publlic\Codec.h">
+      <Filter>publlic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\publlic\MessageDispatcher.h">
+      <Filter>publlic</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Server\Getway.proto">
+      <Filter>Server</Filter>
+    </None>
   </ItemGroup>
 </Project>

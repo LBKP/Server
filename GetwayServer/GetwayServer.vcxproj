@@ -86,15 +86,21 @@
     <LibraryPath>/home/ubuntu/build/release-install-cpp17/lib</LibraryPath>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="..\publlic\Codec.cpp" />
     <ClCompile Include="..\publlic\Config.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Server\Codec.cpp" />
+    <ClCompile Include="Server\Getway.pb.cc" />
     <ClCompile Include="Server\GetwayServer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\publlic\Codec.h" />
     <ClInclude Include="..\publlic\Config.h" />
-    <ClInclude Include="Server\Codec.h" />
+    <ClInclude Include="..\publlic\MessageDispatcher.h" />
+    <ClInclude Include="Server\Getway.pb.h" />
     <ClInclude Include="Server\GetwayServer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Server\Getway.proto" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -107,10 +113,10 @@
       <CppLanguageStandard>c++17</CppLanguageStandard>
     </ClCompile>
     <Link>
-      <LibraryDependencies>ssl;muduo_net;muduo_wss;muduo_base;pthread</LibraryDependencies>
+      <LibraryDependencies>protobuf;muduo_net;muduo_wss;muduo_base;pthread;dl;ssl;crypto;</LibraryDependencies>
       <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(Link.AdditionalLibraryDirectories);/home/ubuntu/build/release-install-cpp17/lib</AdditionalLibraryDirectories>
-      <AdditionalOptions>"/usr/local/lib/libcrypto.so.1.1" %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalLibraryDirectories>%(Link.AdditionalLibraryDirectories);/home/ubuntu/build/debug-install-cpp17/lib</AdditionalLibraryDirectories>
+      <VerboseOutput>false</VerboseOutput>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
