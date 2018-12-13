@@ -6,6 +6,7 @@ enum ServerType
     LOGIN = 0;
     LOBBY = 1;
 }
+
 message ServerRegister
 {
     ServerType type = 1;
@@ -20,4 +21,10 @@ message MessageError
         CHECK_SUM_ERROR = 2;
     }
     ErrorType error = 1;
+}
+
+message ClientConnected
+{
+	int32 hash = 1;
+	bool connected = 2;
 }

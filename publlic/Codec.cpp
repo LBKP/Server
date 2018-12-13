@@ -35,12 +35,13 @@ const string& ProtobufCodec::errorCodeToString(ErrorCode errorCode)
 	}
 }
 
-void ProtobufCodec::fillEmptyBuffer(muduo::net::Buffer * buf, const google::protobuf::Message & message)
+void ProtobufCodec::fillEmptyBuffer(muduo::net::Buffer * buf, const int32_t hash, const google::protobuf::Message & message)
 {
 	assert(buf->readableBytes() == 0);
+	buf->appendInt32(hash);
 	const std::string& typeName = message.GetTypeName();
-	int32_t nameLen = static_cast<int32_t>(typeName.size()) + 1;
-	buf->appendInt32(nameLen);
+	int8_t nameLen = static_cast<int8_t>(typeName.size()) + 1;
+	buf->appendInt8(nameLen);
 	buf->append(typeName.c_str(), nameLen);
 
 	int byte_size = message.ByteSize();
@@ -49,11 +50,11 @@ void ProtobufCodec::fillEmptyBuffer(muduo::net::Buffer * buf, const google::prot
 	uint8_t* start = reinterpret_cast<uint8_t*>(buf->beginWrite());
 	uint8_t* end = message.SerializeWithCachedSizesToArray(start);
 	if (end - start != byte_size)
-	{
+	{//FIXME
 		//ByteSizeConsistencyError(byte_size, message.ByteSize(), static_cast<int>(end - start));
 	}
 	buf->hasWritten(byte_size);
-	assert(buf->readableBytes() == sizeof nameLen + nameLen + byte_size);
+	assert(buf->readableBytes() == sizeof hash + sizeof nameLen + nameLen + byte_size);
 	int32_t len = sockets::hostToNetwork32(static_cast<int32_t>(buf->readableBytes()));
 	buf->prepend(&len, sizeof len);
 }
@@ -84,7 +85,7 @@ int8_t asInt8(const char* buf)
 	return be8;
 }
 
-void ProtobufCodec::onMessage(const TcpConnectionPtr& conn,
+void ProtobufCodec::onMessage(const int hash,
 	Buffer* buf,
 	Timestamp receiveTime)
 {

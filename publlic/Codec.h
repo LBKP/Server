@@ -52,21 +52,22 @@ public:
 	{
 	}
 
-	void onMessage(const muduo::net::TcpConnectionPtr& conn,
+	void onMessage(const int hash,
 		muduo::net::Buffer* buf,
 		muduo::Timestamp receiveTime);
 
 	void send(const muduo::net::TcpConnectionPtr& conn,
+		const int hash,
 		const google::protobuf::Message& message)
 	{
 		// FIXME: serialize to TcpConnection::outputBuffer()
 		muduo::net::Buffer buf;
-		fillEmptyBuffer(&buf, message);
+		fillEmptyBuffer(&buf, hash, message);
 		conn->send(&buf);
 	}
 
 	static const muduo::string& errorCodeToString(ErrorCode errorCode);
-	static void fillEmptyBuffer(muduo::net::Buffer* buf, const google::protobuf::Message& message);
+	static void fillEmptyBuffer(muduo::net::Buffer* buf, const int32_t hash, const google::protobuf::Message& message);
 	static google::protobuf::Message* createMessage(const std::string& type_name);
 	static MessagePtr parse(const char* buf, int len, ErrorCode* errorCode);
 

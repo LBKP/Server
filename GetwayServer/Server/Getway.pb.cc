@@ -30,6 +30,11 @@ class MessageErrorDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<MessageError>
       _instance;
 } _MessageError_default_instance_;
+class ClientConnectedDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<ClientConnected>
+      _instance;
+} _ClientConnected_default_instance_;
 }  // namespace Getway
 namespace protobuf_Getway_2eproto {
 static void InitDefaultsServerRegister() {
@@ -60,12 +65,27 @@ static void InitDefaultsMessageError() {
 ::google::protobuf::internal::SCCInfo<0> scc_info_MessageError =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMessageError}, {}};
 
+static void InitDefaultsClientConnected() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::Getway::_ClientConnected_default_instance_;
+    new (ptr) ::Getway::ClientConnected();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::Getway::ClientConnected::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_ClientConnected =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsClientConnected}, {}};
+
 void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_ServerRegister.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MessageError.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_ClientConnected.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[2];
+::google::protobuf::Metadata file_level_metadata[3];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -81,15 +101,24 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Getway::MessageError, error_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Getway::ClientConnected, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Getway::ClientConnected, hash_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Getway::ClientConnected, connected_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Getway::ServerRegister)},
   { 6, -1, sizeof(::Getway::MessageError)},
+  { 12, -1, sizeof(::Getway::ClientConnected)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::Getway::_ServerRegister_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::Getway::_MessageError_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Getway::_ClientConnected_default_instance_),
 };
 
 void protobuf_AssignDescriptors() {
@@ -107,7 +136,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 2);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 3);
 }
 
 void AddDescriptorsImpl() {
@@ -118,11 +147,12 @@ void AddDescriptorsImpl() {
       "essageError\022-\n\005error\030\001 \001(\0162\036.Getway.Mess"
       "ageError.ErrorType\"J\n\tErrorType\022\016\n\nHASH_"
       "ERROR\020\000\022\030\n\024MESSAGE_FORMAT_ERROR\020\001\022\023\n\017CHE"
-      "CK_SUM_ERROR\020\002*\"\n\nServerType\022\t\n\005LOGIN\020\000\022"
-      "\t\n\005LOBBY\020\001b\006proto3"
+      "CK_SUM_ERROR\020\002\"2\n\017ClientConnected\022\014\n\004has"
+      "h\030\001 \001(\005\022\021\n\tconnected\030\002 \001(\010*\"\n\nServerType"
+      "\022\t\n\005LOGIN\020\000\022\t\n\005LOBBY\020\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 258);
+      descriptor, 310);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Getway.proto", &protobuf_RegisterTypes);
 }
@@ -627,6 +657,269 @@ void MessageError::InternalSwap(MessageError* other) {
 }
 
 
+// ===================================================================
+
+void ClientConnected::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int ClientConnected::kHashFieldNumber;
+const int ClientConnected::kConnectedFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+ClientConnected::ClientConnected()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_Getway_2eproto::scc_info_ClientConnected.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Getway.ClientConnected)
+}
+ClientConnected::ClientConnected(const ClientConnected& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&hash_, &from.hash_,
+    static_cast<size_t>(reinterpret_cast<char*>(&connected_) -
+    reinterpret_cast<char*>(&hash_)) + sizeof(connected_));
+  // @@protoc_insertion_point(copy_constructor:Getway.ClientConnected)
+}
+
+void ClientConnected::SharedCtor() {
+  ::memset(&hash_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&connected_) -
+      reinterpret_cast<char*>(&hash_)) + sizeof(connected_));
+}
+
+ClientConnected::~ClientConnected() {
+  // @@protoc_insertion_point(destructor:Getway.ClientConnected)
+  SharedDtor();
+}
+
+void ClientConnected::SharedDtor() {
+}
+
+void ClientConnected::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* ClientConnected::descriptor() {
+  ::protobuf_Getway_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_Getway_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const ClientConnected& ClientConnected::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_Getway_2eproto::scc_info_ClientConnected.base);
+  return *internal_default_instance();
+}
+
+
+void ClientConnected::Clear() {
+// @@protoc_insertion_point(message_clear_start:Getway.ClientConnected)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&hash_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&connected_) -
+      reinterpret_cast<char*>(&hash_)) + sizeof(connected_));
+  _internal_metadata_.Clear();
+}
+
+bool ClientConnected::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:Getway.ClientConnected)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // int32 hash = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &hash_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // bool connected = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &connected_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Getway.ClientConnected)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Getway.ClientConnected)
+  return false;
+#undef DO_
+}
+
+void ClientConnected::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Getway.ClientConnected)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 hash = 1;
+  if (this->hash() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->hash(), output);
+  }
+
+  // bool connected = 2;
+  if (this->connected() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->connected(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:Getway.ClientConnected)
+}
+
+::google::protobuf::uint8* ClientConnected::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:Getway.ClientConnected)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 hash = 1;
+  if (this->hash() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->hash(), target);
+  }
+
+  // bool connected = 2;
+  if (this->connected() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->connected(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:Getway.ClientConnected)
+  return target;
+}
+
+size_t ClientConnected::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Getway.ClientConnected)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // int32 hash = 1;
+  if (this->hash() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->hash());
+  }
+
+  // bool connected = 2;
+  if (this->connected() != 0) {
+    total_size += 1 + 1;
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void ClientConnected::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Getway.ClientConnected)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ClientConnected* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const ClientConnected>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Getway.ClientConnected)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Getway.ClientConnected)
+    MergeFrom(*source);
+  }
+}
+
+void ClientConnected::MergeFrom(const ClientConnected& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Getway.ClientConnected)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.hash() != 0) {
+    set_hash(from.hash());
+  }
+  if (from.connected() != 0) {
+    set_connected(from.connected());
+  }
+}
+
+void ClientConnected::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Getway.ClientConnected)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ClientConnected::CopyFrom(const ClientConnected& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Getway.ClientConnected)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ClientConnected::IsInitialized() const {
+  return true;
+}
+
+void ClientConnected::Swap(ClientConnected* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ClientConnected::InternalSwap(ClientConnected* other) {
+  using std::swap;
+  swap(hash_, other->hash_);
+  swap(connected_, other->connected_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata ClientConnected::GetMetadata() const {
+  protobuf_Getway_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_Getway_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace Getway
 namespace google {
@@ -636,6 +929,9 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Getway::ServerRegister* Arena::C
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Getway::MessageError* Arena::CreateMaybeMessage< ::Getway::MessageError >(Arena* arena) {
   return Arena::CreateInternal< ::Getway::MessageError >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Getway::ClientConnected* Arena::CreateMaybeMessage< ::Getway::ClientConnected >(Arena* arena) {
+  return Arena::CreateInternal< ::Getway::ClientConnected >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

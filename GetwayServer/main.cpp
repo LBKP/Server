@@ -14,10 +14,9 @@
 #include <muduo/net/EventLoop.h>
 
 #include "../publlic/Config.h"
-#include "Server/GetwayServer.h"
+#include "Server/GatewayServer.h"
 
 using namespace std;
-#define DEBUG
 muduo::AsyncLogging* g_asyncLog = nullptr;
 void asyncOutput(const char* msg, int len)
 {
@@ -30,7 +29,7 @@ void asyncOutput(const char* msg, int len)
 int main(int argc, char** argv)
 {
 	//set just start once
-	int lock_file = open("/tmp/GetwayServer.lock", O_CREAT | O_RDWR, 0666);
+	int lock_file = open("/tmp/GatewayServer.lock", O_CREAT | O_RDWR, 0666);
 	int rc = flock(lock_file, LOCK_EX | LOCK_NB);
 	if(rc)
 	{
@@ -109,7 +108,7 @@ int main(int argc, char** argv)
 	muduo::net::InetAddress TcpSocketAddr(config.Read<uint16_t>("SerPort"));
 
 	muduo::net::EventLoop loop;
-	GetwayServer server(&loop, webSocketAddr, TcpSocketAddr, ssl);
+	GatewayServer server(&loop, webSocketAddr, TcpSocketAddr, ssl);
 	server.start();
 	loop.loop();
 	return 0;

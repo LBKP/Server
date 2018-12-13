@@ -39,7 +39,7 @@ namespace protobuf_Getway_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[2];
+  static const ::google::protobuf::internal::ParseTable schema[3];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -47,6 +47,9 @@ struct TableStruct {
 void AddDescriptors();
 }  // namespace protobuf_Getway_2eproto
 namespace Getway {
+class ClientConnected;
+class ClientConnectedDefaultTypeInternal;
+extern ClientConnectedDefaultTypeInternal _ClientConnected_default_instance_;
 class MessageError;
 class MessageErrorDefaultTypeInternal;
 extern MessageErrorDefaultTypeInternal _MessageError_default_instance_;
@@ -56,6 +59,7 @@ extern ServerRegisterDefaultTypeInternal _ServerRegister_default_instance_;
 }  // namespace Getway
 namespace google {
 namespace protobuf {
+template<> ::Getway::ClientConnected* Arena::CreateMaybeMessage<::Getway::ClientConnected>(Arena*);
 template<> ::Getway::MessageError* Arena::CreateMaybeMessage<::Getway::MessageError>(Arena*);
 template<> ::Getway::ServerRegister* Arena::CreateMaybeMessage<::Getway::ServerRegister>(Arena*);
 }  // namespace protobuf
@@ -339,6 +343,116 @@ class MessageError : public ::google::protobuf::Message /* @@protoc_insertion_po
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_Getway_2eproto::TableStruct;
 };
+// -------------------------------------------------------------------
+
+class ClientConnected : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Getway.ClientConnected) */ {
+ public:
+  ClientConnected();
+  virtual ~ClientConnected();
+
+  ClientConnected(const ClientConnected& from);
+
+  inline ClientConnected& operator=(const ClientConnected& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ClientConnected(ClientConnected&& from) noexcept
+    : ClientConnected() {
+    *this = ::std::move(from);
+  }
+
+  inline ClientConnected& operator=(ClientConnected&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ClientConnected& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ClientConnected* internal_default_instance() {
+    return reinterpret_cast<const ClientConnected*>(
+               &_ClientConnected_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  void Swap(ClientConnected* other);
+  friend void swap(ClientConnected& a, ClientConnected& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ClientConnected* New() const final {
+    return CreateMaybeMessage<ClientConnected>(NULL);
+  }
+
+  ClientConnected* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<ClientConnected>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const ClientConnected& from);
+  void MergeFrom(const ClientConnected& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ClientConnected* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // int32 hash = 1;
+  void clear_hash();
+  static const int kHashFieldNumber = 1;
+  ::google::protobuf::int32 hash() const;
+  void set_hash(::google::protobuf::int32 value);
+
+  // bool connected = 2;
+  void clear_connected();
+  static const int kConnectedFieldNumber = 2;
+  bool connected() const;
+  void set_connected(bool value);
+
+  // @@protoc_insertion_point(class_scope:Getway.ClientConnected)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::int32 hash_;
+  bool connected_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_Getway_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -382,9 +496,43 @@ inline void MessageError::set_error(::Getway::MessageError_ErrorType value) {
   // @@protoc_insertion_point(field_set:Getway.MessageError.error)
 }
 
+// -------------------------------------------------------------------
+
+// ClientConnected
+
+// int32 hash = 1;
+inline void ClientConnected::clear_hash() {
+  hash_ = 0;
+}
+inline ::google::protobuf::int32 ClientConnected::hash() const {
+  // @@protoc_insertion_point(field_get:Getway.ClientConnected.hash)
+  return hash_;
+}
+inline void ClientConnected::set_hash(::google::protobuf::int32 value) {
+  
+  hash_ = value;
+  // @@protoc_insertion_point(field_set:Getway.ClientConnected.hash)
+}
+
+// bool connected = 2;
+inline void ClientConnected::clear_connected() {
+  connected_ = false;
+}
+inline bool ClientConnected::connected() const {
+  // @@protoc_insertion_point(field_get:Getway.ClientConnected.connected)
+  return connected_;
+}
+inline void ClientConnected::set_connected(bool value) {
+  
+  connected_ = value;
+  // @@protoc_insertion_point(field_set:Getway.ClientConnected.connected)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 

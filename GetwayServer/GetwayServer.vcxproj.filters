@@ -13,22 +13,22 @@
     <ClCompile Include="..\publlic\Config.cpp">
       <Filter>publlic</Filter>
     </ClCompile>
-    <ClCompile Include="Server\GetwayServer.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
     <ClCompile Include="Server\Getway.pb.cc">
       <Filter>Server</Filter>
     </ClCompile>
     <ClCompile Include="..\publlic\Codec.cpp">
       <Filter>publlic</Filter>
     </ClCompile>
+    <ClCompile Include="Server\GatewayServer.h">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="Server\GatewayServer.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\publlic\Config.h">
       <Filter>publlic</Filter>
-    </ClInclude>
-    <ClInclude Include="Server\GetwayServer.h">
-      <Filter>Server</Filter>
     </ClInclude>
     <ClInclude Include="Server\Getway.pb.h">
       <Filter>Server</Filter>

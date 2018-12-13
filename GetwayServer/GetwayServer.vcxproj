@@ -90,14 +90,14 @@
     <ClCompile Include="..\publlic\Config.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Server\Getway.pb.cc" />
-    <ClCompile Include="Server\GetwayServer.cpp" />
+    <ClCompile Include="Server\GatewayServer.cpp" />
+    <ClCompile Include="Server\GatewayServer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\publlic\Codec.h" />
     <ClInclude Include="..\publlic\Config.h" />
     <ClInclude Include="..\publlic\MessageDispatcher.h" />
     <ClInclude Include="Server\Getway.pb.h" />
-    <ClInclude Include="Server\GetwayServer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Server\Getway.proto" />
@@ -111,6 +111,7 @@
     <ClCompile>
       <TreatWarningAsError>true</TreatWarningAsError>
       <CppLanguageStandard>c++17</CppLanguageStandard>
+      <AdditionalOptions>-DDEBUG %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <LibraryDependencies>protobuf;muduo_net;muduo_wss;muduo_base;pthread;dl;ssl;crypto;</LibraryDependencies>
