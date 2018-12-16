@@ -43,6 +43,7 @@
     <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
     <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
     <LinuxProjectType>{2238F9CD-F817-4ECC-BD14-2524D2669B35}</LinuxProjectType>
+    <ProjectName>GatewayServer</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
@@ -78,8 +79,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>/home/ubuntu/build/release-install-cpp17/include;$(IncludePath)</IncludePath>
-    <ProjectPublicIncludePath>/home/ubuntu/build/release-install-cpp17/include</ProjectPublicIncludePath>
+    <ProjectPublicIncludePath>/home/ubuntu/build/debug-install-cpp17/include</ProjectPublicIncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
+    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>/home/ubuntu/build/release-install-cpp17/include;$(IncludePath)</IncludePath>
@@ -89,18 +92,18 @@
     <ClCompile Include="..\publlic\Codec.cpp" />
     <ClCompile Include="..\publlic\Config.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Server\Getway.pb.cc" />
+    <ClCompile Include="Server\Gateway.pb.cc" />
     <ClCompile Include="Server\GatewayServer.cpp" />
-    <ClCompile Include="Server\GatewayServer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\publlic\Codec.h" />
     <ClInclude Include="..\publlic\Config.h" />
     <ClInclude Include="..\publlic\MessageDispatcher.h" />
-    <ClInclude Include="Server\Getway.pb.h" />
+    <ClInclude Include="Server\Gateway.pb.h" />
+    <ClInclude Include="Server\GatewayServer.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Server\Getway.proto" />
+    <None Include="Server\Gateway.proto" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -111,10 +114,12 @@
     <ClCompile>
       <TreatWarningAsError>true</TreatWarningAsError>
       <CppLanguageStandard>c++17</CppLanguageStandard>
-      <AdditionalOptions>-DDEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-DLOGTOTERMINAL %(AdditionalOptions)</AdditionalOptions>
+      <CAdditionalWarning>switch;no-deprecated-declarations;empty-body;return-type;parentheses;no-pointer-sign;no-format;uninitialized;unreachable-code;unused-function;unused-value;unused-variable</CAdditionalWarning>
+      <CppAdditionalWarning>switch;no-deprecated-declarations;empty-body;return-type;parentheses;no-format;uninitialized;unreachable-code;unused-function;unused-value;unused-variable</CppAdditionalWarning>
     </ClCompile>
     <Link>
-      <LibraryDependencies>protobuf;muduo_net;muduo_wss;muduo_base;pthread;dl;ssl;crypto;</LibraryDependencies>
+      <LibraryDependencies>protobuf;muduo_net;muduo_wss;muduo_base;pthread;dl;ssl;crypto;z;</LibraryDependencies>
       <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(Link.AdditionalLibraryDirectories);/home/ubuntu/build/debug-install-cpp17/lib</AdditionalLibraryDirectories>
       <VerboseOutput>false</VerboseOutput>

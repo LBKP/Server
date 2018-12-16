@@ -15,7 +15,8 @@ class Callback : muduo::noncopyable
 {
 public:
 	virtual ~Callback() {};
-	virtual void onMessage(const int hash,
+	virtual void onMessage(const muduo::net::TcpConnectionPtr&, 
+		const int hash,
 		const MessagePtr& message,
 		muduo::Timestamp) const = 0;
 };
@@ -26,7 +27,8 @@ class CallbackT :public Callback
 	static_assert(std::is_base_of<google::protobuf::Message, T>::value,
 		"T must be a Message");
 public:
-	typedef std::function<void(const int,
+	typedef std::function<void(const muduo::net::TcpConnectionPtr&,
+		const int,
 		const std::shared_ptr<T>& message,
 		muduo::Timestamp)> ProtobufMessageTCallback;
 	CallbackT(const ProtobufMessageTCallback& callback)
@@ -34,20 +36,21 @@ public:
 	{
 	}
 
-	virtual void onMessage(const int hash,
+	virtual void onMessage(const muduo::net::TcpConnectionPtr& conn,
+		const int hash,
 		const MessagePtr& message,
 		muduo::Timestamp receiveTime) const
 	{
 		std::shared_ptr<T> concrete = muduo::down_pointer_cast<T>(message);
 		assert(concrete != NULL);
-		callback_(hash, concrete, receiveTime);
+		callback_(conn, hash, concrete, receiveTime);
 	}
 
 private:
 	ProtobufMessageTCallback callback_;
 };
 
-typedef std::function<void(const int hash, const MessagePtr& message, muduo::Timestamp)> ProtobufMessageCallback;
+typedef std::function<void(const muduo::net::TcpConnectionPtr conn, const int hash, const MessagePtr& message, muduo::Timestamp)> ProtobufMessageCallback;
 class ProtobufDispatcher
 {
 public:
@@ -57,18 +60,19 @@ public:
 	{
 	}
 
-	void onProtobufMessage(const int hash,
+	void onProtobufMessage(const muduo::net::TcpConnectionPtr conn,
+		const int hash,
 		const MessagePtr& message,
 		muduo::Timestamp receiveTime) const
 	{
 		CallbackMap::const_iterator it = callbacks_.find(message->GetDescriptor());
 		if (it != callbacks_.end())
 		{
-			it->second->onMessage(hash, message, receiveTime);
+			it->second->onMessage(conn, hash, message, receiveTime);
 		}
 		else
 		{
-			defaultCallback_(hash, message, receiveTime);
+			defaultCallback_(conn, hash, message, receiveTime);
 		}
 	}
 

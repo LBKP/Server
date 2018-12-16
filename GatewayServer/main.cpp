@@ -14,14 +14,14 @@
 #include <muduo/net/EventLoop.h>
 
 #include "../publlic/Config.h"
-#include "Server/GatewayServer.h"
+#include "./Server/GatewayServer.h"
 
 using namespace std;
 muduo::AsyncLogging* g_asyncLog = nullptr;
 void asyncOutput(const char* msg, int len)
 {
 	g_asyncLog->append(msg, len);
-#ifdef DEBUG
+#ifdef LOGTOTERMINAL
 	fwrite(msg, 1, len, stdout);
 #endif // DEBUG
 }
@@ -71,7 +71,7 @@ int main(int argc, char** argv)
 	if(isDaemon)
 		daemon(1, 0);//1 current dir is work dir;0 fd 0, 1, 2to /dev/null
 
-	Config config("./Getway.cfg");
+	Config config("./Gateway.cfg");
 
 
 	//init logger timezone

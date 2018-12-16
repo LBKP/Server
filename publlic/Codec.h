@@ -31,11 +31,13 @@ public:
 		kParseError,
 	};
 
-	typedef std::function<void(const /*muduo::net::TcpConnectionPtr*/int&,
+	typedef std::function<void(const muduo::net::TcpConnectionPtr&,
+		int,
 		const MessagePtr&,
 		muduo::Timestamp)> ProtobufMessageCallback;
 
 	typedef std::function<void(const muduo::net::TcpConnectionPtr&,
+		int,
 		muduo::net::Buffer*,
 		muduo::Timestamp,
 		ErrorCode)> ErrorCallback;
@@ -52,7 +54,7 @@ public:
 	{
 	}
 
-	void onMessage(const int hash,
+	void onMessage(const muduo::net::TcpConnectionPtr conn,
 		muduo::net::Buffer* buf,
 		muduo::Timestamp receiveTime);
 
@@ -69,18 +71,20 @@ public:
 	static const muduo::string& errorCodeToString(ErrorCode errorCode);
 	static void fillEmptyBuffer(muduo::net::Buffer* buf, const int32_t hash, const google::protobuf::Message& message);
 	static google::protobuf::Message* createMessage(const std::string& type_name);
-	static MessagePtr parse(const char* buf, int len, ErrorCode* errorCode);
+	static MessagePtr parse(const char* buf, int len, int32_t& hash, ErrorCode& errorCode);
 
 private:
 	static void defaultErrorCallback(const muduo::net::TcpConnectionPtr&,
+		int,
 		muduo::net::Buffer*,
 		muduo::Timestamp,
 		ErrorCode);
 
 	ProtobufMessageCallback messageCallback_;
 	ErrorCallback errorCallback_;
-
+public:
 	const static int kHeaderLen = sizeof(int32_t);
-	const static int kMinMessageLen = 2 * kHeaderLen + 2; // nameLen + typeName + starting
+	const static int kSizeofNameLen = sizeof(int8_t);
+	const static int kMinMessageLen = kHeaderLen + 2; // nameLen(1) + typeName(>1) + starting(4)
 	const static int kMaxMessageLen = 64 * 1024 * 1024; // same as codec_stream.h kDefaultTotalBytesLimit
 };

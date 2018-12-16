@@ -60,11 +60,12 @@ void ProtobufCodec::fillEmptyBuffer(muduo::net::Buffer * buf, const int32_t hash
 }
 
 void ProtobufCodec::defaultErrorCallback(const muduo::net::TcpConnectionPtr& conn,
+	int hash,
 	muduo::net::Buffer* buf,
 	muduo::Timestamp,
 	ErrorCode errorCode)
 {
-	LOG_ERROR << "ProtobufCodec::defaultErrorCallback - " << errorCodeToString(errorCode);
+	LOG_ERROR << "ProtobufCodec::defaultErrorCallback - " << errorCodeToString(errorCode) << "  hash is " << hash;
 	//   if (conn && conn->connected())
 	//   {
 	//     conn->shutdown();
@@ -85,7 +86,7 @@ int8_t asInt8(const char* buf)
 	return be8;
 }
 
-void ProtobufCodec::onMessage(const int hash,
+void ProtobufCodec::onMessage(const muduo::net::TcpConnectionPtr conn,
 	Buffer* buf,
 	Timestamp receiveTime)
 {
@@ -94,21 +95,23 @@ void ProtobufCodec::onMessage(const int hash,
 		const int32_t len = buf->peekInt32();
 		if (len > kMaxMessageLen || len < kMinMessageLen)
 		{
-			errorCallback_(conn, buf, receiveTime, kInvalidLength);
+			errorCallback_(conn, -1, buf, receiveTime, kInvalidLength);
 			break;
 		}
 		else if (buf->readableBytes() >= implicit_cast<size_t>(len + kHeaderLen))
 		{
 			ErrorCode errorCode = kNoError;
-			MessagePtr message = parse(buf->peek() + kHeaderLen, len, &errorCode);
+			int hash = -1;
+			MessagePtr message = parse(buf->peek() + kHeaderLen, len, hash, errorCode);
 			if (errorCode == kNoError && message)
 			{
-				messageCallback_(1, message, receiveTime);
+				messageCallback_(conn, hash, message, receiveTime);
 				buf->retrieve(kHeaderLen + len);
 			}
 			else
 			{
-				errorCallback_(conn, buf, receiveTime, errorCode);
+				errorCallback_(conn, hash, buf, receiveTime, errorCode);
+				buf->retrieve(kHeaderLen + len);
 				break;
 			}
 		}
@@ -136,39 +139,39 @@ google::protobuf::Message* ProtobufCodec::createMessage(const std::string& typeN
 	return message;
 }
 
-MessagePtr ProtobufCodec::parse(const char* buf, int len, ErrorCode* error)
+MessagePtr ProtobufCodec::parse(const char* buf, int len, int32_t& hash, ErrorCode& error)
 {
 	MessagePtr message;
-
+	hash = asInt32(buf);
 	// get message type name
-	int32_t nameLen = asInt32(buf);
-	if (nameLen >= 2 && nameLen <= len - 2 * kHeaderLen)
+	int32_t nameLen = asInt8(buf + kHeaderLen);
+	if (nameLen >= 2 && nameLen <= len - kHeaderLen - kSizeofNameLen)
 	{
-		std::string typeName(buf + kHeaderLen, buf + kHeaderLen + nameLen - 1);
+		std::string typeName(buf + kHeaderLen + kSizeofNameLen, buf + kHeaderLen + kSizeofNameLen + nameLen - 1);
 		// create message object
 		message.reset(createMessage(typeName));
 		if (message)
 		{
 			// parse from buffer
-			const char* data = buf + kHeaderLen + nameLen;
-			int32_t dataLen = len - nameLen - 2 * kHeaderLen;
+			const char* data = buf + kHeaderLen + kSizeofNameLen + nameLen;
+			int32_t dataLen = len - nameLen - kSizeofNameLen - kHeaderLen;
 			if (message->ParseFromArray(data, dataLen))
 			{
-				*error = kNoError;
+				error = kNoError;
 			}
 			else
 			{
-				*error = kParseError;
+				error = kParseError;
 			}
 		}
 		else
 		{
-			*error = kUnknownMessageType;
+			error = kUnknownMessageType;
 		}
 	}
 	else
 	{
-		*error = kInvalidNameLen;
+		error = kInvalidNameLen;
 	}
 
 	return message;
