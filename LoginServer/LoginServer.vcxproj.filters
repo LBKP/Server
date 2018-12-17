@@ -2,36 +2,39 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="publlic">
-      <UniqueIdentifier>{8f86a0fa-bf1e-40ba-9d17-fee9c226a5c3}</UniqueIdentifier>
+      <UniqueIdentifier>{fd20ae65-c117-4000-899a-69b4afe68390}</UniqueIdentifier>
     </Filter>
-    <Filter Include="LoginServer">
-      <UniqueIdentifier>{a3726f55-9d2e-41b8-b246-d622fe005249}</UniqueIdentifier>
+    <Filter Include="Server">
+      <UniqueIdentifier>{14bd479b-afba-4e23-963c-e625fa9d69ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\Message">
+      <UniqueIdentifier>{cca40604-b47f-4636-a1e3-1c0ca3dd17cb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="..\publlic\Config.cpp">
       <Filter>publlic</Filter>
     </ClCompile>
-    <ClCompile Include="LoginServer\LoginServer.cpp">
-      <Filter>LoginServer</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="..\publlic\Codec.cpp">
       <Filter>publlic</Filter>
     </ClCompile>
-    <ClCompile Include="LoginServer\MessageRegister.h">
-      <Filter>LoginServer</Filter>
+    <ClCompile Include="LoginServer\Message\Gateway.pb.cc">
+      <Filter>Server\Message</Filter>
     </ClCompile>
-    <ClCompile Include="LoginServer\MessageRegister.cpp">
-      <Filter>publlic</Filter>
+    <ClCompile Include="LoginServer\Message\Login.pb.cc">
+      <Filter>Server\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginServer\Message\MessageRegister.cpp">
+      <Filter>Server\Message</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginServer\LoginServer.cpp">
+      <Filter>Server</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\publlic\Config.h">
       <Filter>publlic</Filter>
-    </ClInclude>
-    <ClInclude Include="LoginServer\LoginServer.h">
-      <Filter>LoginServer</Filter>
     </ClInclude>
     <ClInclude Include="..\publlic\Codec.h">
       <Filter>publlic</Filter>
@@ -39,11 +42,25 @@
     <ClInclude Include="..\publlic\MessageDispatcher.h">
       <Filter>publlic</Filter>
     </ClInclude>
+    <ClInclude Include="LoginServer\Message\Gateway.pb.h">
+      <Filter>Server\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginServer\Message\Login.pb.h">
+      <Filter>Server\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginServer\Message\MessageRegister.h">
+      <Filter>Server\Message</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginServer\LoginServer.h">
+      <Filter>Server</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
-    <None Include="LoginServer\Login.proto">
-      <Filter>LoginServer</Filter>
+    <None Include="LoginServer\Message\Gateway.proto">
+      <Filter>Server\Message</Filter>
+    </None>
+    <None Include="LoginServer\Message\Login.proto">
+      <Filter>Server\Message</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -35,14 +35,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{f386e64e-37a3-43e8-a2e6-f8139b5a6a56}</ProjectGuid>
+    <ProjectGuid>{F386E64E-37A3-43E8-A2E6-F8139B5A6A56}</ProjectGuid>
     <Keyword>Linux</Keyword>
-    <RootNamespace>LoginServer</RootNamespace>
+    <RootNamespace>GetwayServer</RootNamespace>
     <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <ApplicationType>Linux</ApplicationType>
     <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
     <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
     <LinuxProjectType>{2238F9CD-F817-4ECC-BD14-2524D2669B35}</LinuxProjectType>
+    <ProjectName>LoginServer</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
@@ -59,9 +60,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
+    <UseOfStl>libstdc++_static</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
+    <UseOfStl>libstdc++_static</UseOfStl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
@@ -74,12 +77,24 @@
   <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>/home/ubuntu/build/release-install-cpp17/include;$(IncludePath)</IncludePath>
+    <ProjectPublicIncludePath>/home/ubuntu/build/debug-install-cpp17/include</ProjectPublicIncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>/home/ubuntu/build/release-install-cpp17/include;$(IncludePath)</IncludePath>
+    <LibraryPath>/home/ubuntu/build/release-install-cpp17/lib</LibraryPath>
+  </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="..\publlic\Codec.cpp" />
     <ClCompile Include="..\publlic\Config.cpp" />
     <ClCompile Include="LoginServer\LoginServer.cpp" />
-    <ClCompile Include="LoginServer\MessageRegister.cpp" />
-    <ClCompile Include="LoginServer\MessageRegister.h" />
+    <ClCompile Include="LoginServer\Message\Gateway.pb.cc" />
+    <ClCompile Include="LoginServer\Message\Login.pb.cc" />
+    <ClCompile Include="LoginServer\Message\MessageRegister.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -87,17 +102,43 @@
     <ClInclude Include="..\publlic\Config.h" />
     <ClInclude Include="..\publlic\MessageDispatcher.h" />
     <ClInclude Include="LoginServer\LoginServer.h" />
+    <ClInclude Include="LoginServer\Message\Gateway.pb.h" />
+    <ClInclude Include="LoginServer\Message\Login.pb.h" />
+    <ClInclude Include="LoginServer\Message\MessageRegister.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
-    <None Include="LoginServer\Login.proto" />
+    <None Include="LoginServer\Message\Gateway.proto" />
+    <None Include="LoginServer\Message\Login.proto" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\竺沛\source\repos\老表快跑\muduo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <CppLanguageStandard>c++17</CppLanguageStandard>
+      <AdditionalOptions>-DLOGTOTERMINAL %(AdditionalOptions)</AdditionalOptions>
+      <CAdditionalWarning>switch;no-deprecated-declarations;empty-body;return-type;parentheses;no-pointer-sign;no-format;uninitialized;unreachable-code;unused-function;unused-value;unused-variable</CAdditionalWarning>
+      <CppAdditionalWarning>switch;no-deprecated-declarations;empty-body;return-type;parentheses;no-format;uninitialized;unreachable-code;unused-function;unused-value;unused-variable</CppAdditionalWarning>
+    </ClCompile>
     <Link>
-      <LibraryDependencies>muduo_net;muduo_base;pthread</LibraryDependencies>
+      <LibraryDependencies>protobuf;muduo_net;muduo_wss;muduo_base;pthread;dl;ssl;crypto;z;</LibraryDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(Link.AdditionalLibraryDirectories);/home/ubuntu/build/debug-install-cpp17/lib</AdditionalLibraryDirectories>
+      <VerboseOutput>false</VerboseOutput>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Link>
+      <LibraryDependencies>muduo_base;muduo_net;pthread;ssl;</LibraryDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);/usr/local/lib/libcrypto.so</AdditionalDependencies>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\竺沛\source\repos\老表快跑\muduo;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CppLanguageStandard>c++17</CppLanguageStandard>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>C:\Users\竺沛\source\repos\老表快跑\muduo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

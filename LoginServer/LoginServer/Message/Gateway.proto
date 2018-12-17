@@ -1,0 +1,48 @@
+syntax = "proto3";
+package Gateway;
+
+enum ServerType
+{
+    LOGIN = 0;
+    LOBBY = 1;
+}
+
+message ServerAttr
+{
+	int32 hash =1;
+	ServerType type =2;
+}
+
+message ServerRegister_SG
+{
+    ServerAttr server = 1;
+}
+
+message ServerConnected_GS
+{
+	ServerAttr server = 1;
+	bool connected = 2;
+}
+
+message MessageError_G
+{
+    enum ErrorType
+    {
+        HASH_ERROR = 0;
+        MESSAGE_FORMAT_ERROR = 1;
+        CHECK_SUM_ERROR = 2;
+    }
+    ErrorType error = 1;
+}
+
+message ClientConnected_GS
+{
+	int32  hash = 1;
+	bool connected = 2;
+}
+
+
+message  AllConnectedServer_GS
+{
+	repeated ServerAttr server = 1;
+}

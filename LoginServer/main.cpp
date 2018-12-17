@@ -14,6 +14,7 @@
 #include <muduo/net/EventLoop.h>
 
 #include "../publlic/Config.h"
+#include "./LoginServer/LoginServer.h"
 
 using namespace std;
 #define DEBUG
@@ -21,7 +22,7 @@ muduo::AsyncLogging* g_asyncLog = nullptr;
 void asyncOutput(const char* msg, int len)
 {
 	g_asyncLog->append(msg, len);
-#ifdef DEBUG
+#ifdef LOGTOTERMINAL
 	fwrite(msg, 1, len, stdout);
 #endif // DEBUG
 }
@@ -43,7 +44,7 @@ int main(int argc, char** argv)
 		char buffer[64];
 		sprintf(buffer, "pid:%d\n", getpid());
 		write(lock_file, buffer, strlen(buffer));
-		close(lock_file);
+		//close(lock_file);
 	}
 
 	//check option
@@ -71,7 +72,7 @@ int main(int argc, char** argv)
 	if (isDaemon)
 		daemon(1, 0);//1 current dir is work dir;0 fd 0, 1, 2to /dev/null
 
-	Config config("./Getway.cfg");
+	Config config("./Login.cfg");
 
 
 	//init logger timezone
@@ -96,9 +97,12 @@ int main(int argc, char** argv)
 	log.start();
 	muduo::Logger::setOutput(asyncOutput);
 
-
+	//start Login server
+	muduo::net::InetAddress GatewayAddr(config.Read<muduo::string>("IP"), config.Read<uint16_t>("Port"));
 
 	muduo::net::EventLoop loop;
+	LoginServer server(&loop, GatewayAddr, "LoginServer");
+	server.start();
 	loop.loop();
 	return 0;
 }

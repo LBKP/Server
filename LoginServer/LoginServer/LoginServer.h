@@ -4,17 +4,18 @@
 #include <muduo/net/EventLoop.h>
 #include <muduo/net/TcpClient.h>
 
-#include "MessageRegister.h"
+#include "./Message/MessageRegister.h"
+#include "./Message/Gateway.pb.h"
 #include "../../publlic/Codec.h"
 #include "../../publlic/MessageDispatcher.h"
 
 
 /****************************************************************
-* Author		£ºZhuPei.pur@outlook.com
-* Create		£º2018/12/1 20:16
-* Version		£º1.0.0.1
-* * Description	£ºUser login and help user into Lobby server
-* * History		£º
+* Author		ï¼šZhuPei.pur@outlook.com
+* Create		ï¼š2018/12/1 20:16
+* Version		ï¼š1.0.0.1
+* * Description	ï¼šUser login and help user into Lobby server
+* * History		ï¼š
 ******************************************************************
 * Copyright ZhuPei  All rights reserved*
 *****************************************************************/
@@ -26,13 +27,18 @@ public:
 		const muduo::net::InetAddress& serverAddr,
 		const muduo::string& nameArg);
 	~LoginServer();
-	void started();
+	void start();
 private:
-	
+	//callbacks
+	void onConnected(const muduo::net::TcpConnectionPtr& conn);
+	void onUnKnownMessage(const muduo::net::TcpConnectionPtr& conn,
+		const int hash,
+		const MessagePtr&message,
+		muduo::Timestamp);
 private:
 	muduo::net::TcpClient connection_;
 	muduo::net::EventLoop* loop_;
-	MessageRegister dispatcher_;
+	ProtobufDispatcher dispatcher_;
 	ProtobufCodec codec_;
 };
 
