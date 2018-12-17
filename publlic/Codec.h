@@ -32,12 +32,12 @@ public:
 	};
 
 	typedef std::function<void(const muduo::net::TcpConnectionPtr&,
-		int,
+		const int,
 		const MessagePtr&,
 		muduo::Timestamp)> ProtobufMessageCallback;
 
 	typedef std::function<void(const muduo::net::TcpConnectionPtr&,
-		int,
+		const int,
 		muduo::net::Buffer*,
 		muduo::Timestamp,
 		ErrorCode)> ErrorCallback;
