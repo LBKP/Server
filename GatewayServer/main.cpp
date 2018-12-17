@@ -43,7 +43,7 @@ int main(int argc, char** argv)
 		char buffer[64];
 		sprintf(buffer, "pid:%d\n", getpid());
 		write(lock_file, buffer, strlen(buffer));
-		close(lock_file); 
+		//close(lock_file); 
 	}
 
 	//check option
