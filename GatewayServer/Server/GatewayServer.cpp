@@ -25,7 +25,7 @@ GatewayServer::GatewayServer(muduo::net::EventLoop *loop,
 		TcpAddr, "TcpServer",
 		muduo::net::TcpServer::kReusePort),
 	loop_(loop),
-	maxId_(kMinClientHash),
+	maxHash_(kMinClientHash),
 	dispatcher_(std::bind(&GatewayServer::onUnKnownMessage, this, _1, _2, _3, _4)),
 	codec_(std::bind(&ProtobufDispatcher::onProtobufMessage, &dispatcher_, _1, _2, _3, _4))
 {
@@ -40,6 +40,9 @@ GatewayServer::GatewayServer(muduo::net::EventLoop *loop,
 
 	dispatcher_.registerMessageCallback<Gateway::ServerRegister_SG>(
 		std::bind(&GatewayServer::onServerRegister, this, _1, _2, _3, _4));
+
+	loop_->runEvery(30,
+		std::bind(&GatewayServer::printServerStatus, this));
 }
 
 GatewayServer::~GatewayServer()
@@ -62,8 +65,8 @@ void GatewayServer::onClientConnection(const muduo::net::TcpConnectionPtr &conn)
 		if (priorIds_.empty())
 		{
 			//don't need consider maxId oversteped the max int
-			hash = maxId_;
-			++maxId_;
+			hash = maxHash_;
+			++maxHash_;
 		}
 		else
 		{
@@ -318,4 +321,15 @@ void GatewayServer::onServerRegister(const muduo::net::TcpConnectionPtr& conn, i
 
 void GatewayServer::onUnKnownMessage(const muduo::net::TcpConnectionPtr& conn, int hash, const MessagePtr& message, muduo::Timestamp)
 {
+	LOG_ERROR << "received a unknown message from " << conn->getTcpInfoString() << " hash is " << hash;
+}
+
+void GatewayServer::printServerStatus()
+{
+	//haven't lock mutex because don't need Exact value
+	LOG_INFO << "\n/************************************************************************/ \n"
+		"					USER_COUNT:" << maxHash_ - 100 - priorIds_.size() << "\n"
+		"					MAX_HASH/PRIOR_SIZE:" << maxHash_ << "/" << priorIds_.size() << "\n"
+		"					SERVER_COUNT:" << Connections_.size() + 100 + priorIds_.size() - maxHash_
+		<< "\n/************************************************************************/";
 }

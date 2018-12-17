@@ -75,6 +75,9 @@ private:
 		int hash,
 		const MessagePtr&message,
 		muduo::Timestamp);
+
+	//server status
+	void printServerStatus();
 private:
 	//recive all connection
 	muduo::net::wss::WebSocketServer websocketServer_;
@@ -84,7 +87,7 @@ private:
 	//manage all connection
 	muduo::MutexLock mutex_;
 	std::unordered_map<int32_t, muduo::net::TcpConnectionPtr> Connections_;
-	int32_t maxId_;
+	int32_t maxHash_;
 	std::queue<int32_t> priorIds_;
 
 	//message handle
