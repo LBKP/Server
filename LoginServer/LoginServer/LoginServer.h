@@ -35,6 +35,14 @@ private:
 		const int hash,
 		const MessagePtr&message,
 		muduo::Timestamp);
+	void onClientConnected(const muduo::net::TcpConnectionPtr& conn,
+		const int hash,
+		const Gateway::ClientConnected_GS& message,
+		muduo::Timestamp);
+	void onClientLogin(const muduo::net::TcpConnectionPtr& conn,
+		const int hash,
+		const Login::ClientLogin_CL& message,
+		muduo::Timestamp);
 private:
 	muduo::net::TcpClient connection_;
 	muduo::net::EventLoop* loop_;

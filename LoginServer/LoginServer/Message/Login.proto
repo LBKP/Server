@@ -1,10 +1,5 @@
 syntax = "proto3";
-package LOGIN;
-
-message NewConnection_GL
-{
-	int32 hash = 1;
-}
+package Login;
 
 message ClientNeedLogin_LC
 {
