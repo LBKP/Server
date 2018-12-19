@@ -301,14 +301,16 @@ void GatewayServer::onServerRegister(const muduo::net::TcpConnectionPtr& conn, i
 	int serverType = message->server().type();
 	for (int hash = serverType * 10; hash < serverType * 10 + 10; hash++)
 	{
+		//find a unused hash
 		if (Connections_.find(hash) == Connections_.end())
-		{ //find a unused hash
+		{ 
+			broadcastNewServerConnected(hash);
+			
 			{
 				muduo::MutexLockGuard lock(mutex_);
 				Connections_[hash] = conn;
 			}
 			conn->setContext(hash);
-			broadcastNewServerConnected(hash);
 			//if (serverType == Gateway::LOBBY)
 			//{
 			sendAllConnectedServer(hash);
@@ -328,8 +330,8 @@ void GatewayServer::printServerStatus()
 {
 	//haven't lock mutex because don't need Exact value
 	LOG_INFO << "\n/************************************************************************/ \n"
-		"					USER_COUNT:" << maxHash_ - 100 - priorIds_.size() << "\n"
-		"					MAX_HASH/PRIOR_SIZE:" << maxHash_ << "/" << priorIds_.size() << "\n"
-		"					SERVER_COUNT:" << Connections_.size() + 100 + priorIds_.size() - maxHash_
+		"				USER_COUNT:" << maxHash_ - 100 - priorIds_.size() << "\n"
+		"				MAX_HASH/PRIOR_SIZE:" << maxHash_ << "/" << priorIds_.size() << "\n"
+		"				SERVER_COUNT:" << Connections_.size() + 100 + priorIds_.size() - maxHash_
 		<< "\n/************************************************************************/";
 }
