@@ -46,35 +46,37 @@ struct TableStruct {
 };
 void AddDescriptors();
 }  // namespace protobuf_Login_2eproto
-namespace LOGIN {
+namespace Login {
 class ClientLogin_CL;
 class ClientLogin_CLDefaultTypeInternal;
 extern ClientLogin_CLDefaultTypeInternal _ClientLogin_CL_default_instance_;
+class ClientNeedLogin_LC;
+class ClientNeedLogin_LCDefaultTypeInternal;
+extern ClientNeedLogin_LCDefaultTypeInternal _ClientNeedLogin_LC_default_instance_;
 class LoginState_LC;
 class LoginState_LCDefaultTypeInternal;
 extern LoginState_LCDefaultTypeInternal _LoginState_LC_default_instance_;
-class NewConnection_GL;
-class NewConnection_GLDefaultTypeInternal;
-extern NewConnection_GLDefaultTypeInternal _NewConnection_GL_default_instance_;
-}  // namespace LOGIN
+}  // namespace Login
 namespace google {
 namespace protobuf {
-template<> ::LOGIN::ClientLogin_CL* Arena::CreateMaybeMessage<::LOGIN::ClientLogin_CL>(Arena*);
-template<> ::LOGIN::LoginState_LC* Arena::CreateMaybeMessage<::LOGIN::LoginState_LC>(Arena*);
-template<> ::LOGIN::NewConnection_GL* Arena::CreateMaybeMessage<::LOGIN::NewConnection_GL>(Arena*);
+template<> ::Login::ClientLogin_CL* Arena::CreateMaybeMessage<::Login::ClientLogin_CL>(Arena*);
+template<> ::Login::ClientNeedLogin_LC* Arena::CreateMaybeMessage<::Login::ClientNeedLogin_LC>(Arena*);
+template<> ::Login::LoginState_LC* Arena::CreateMaybeMessage<::Login::LoginState_LC>(Arena*);
 }  // namespace protobuf
 }  // namespace google
-namespace LOGIN {
+namespace Login {
 
 enum LoginState_LC_LoginState {
   LoginState_LC_LoginState_SUCCESS = 0,
-  LoginState_LC_LoginState_ERROR = 1,
+  LoginState_LC_LoginState_CODE_ERROR = 1,
+  LoginState_LC_LoginState_BUSY_ERROR = 2,
+  LoginState_LC_LoginState_SESSION_ERROR = 3,
   LoginState_LC_LoginState_LoginState_LC_LoginState_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   LoginState_LC_LoginState_LoginState_LC_LoginState_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool LoginState_LC_LoginState_IsValid(int value);
 const LoginState_LC_LoginState LoginState_LC_LoginState_LoginState_MIN = LoginState_LC_LoginState_SUCCESS;
-const LoginState_LC_LoginState LoginState_LC_LoginState_LoginState_MAX = LoginState_LC_LoginState_ERROR;
+const LoginState_LC_LoginState LoginState_LC_LoginState_LoginState_MAX = LoginState_LC_LoginState_SESSION_ERROR;
 const int LoginState_LC_LoginState_LoginState_ARRAYSIZE = LoginState_LC_LoginState_LoginState_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* LoginState_LC_LoginState_descriptor();
@@ -89,24 +91,24 @@ inline bool LoginState_LC_LoginState_Parse(
 }
 // ===================================================================
 
-class NewConnection_GL : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:LOGIN.NewConnection_GL) */ {
+class ClientNeedLogin_LC : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Login.ClientNeedLogin_LC) */ {
  public:
-  NewConnection_GL();
-  virtual ~NewConnection_GL();
+  ClientNeedLogin_LC();
+  virtual ~ClientNeedLogin_LC();
 
-  NewConnection_GL(const NewConnection_GL& from);
+  ClientNeedLogin_LC(const ClientNeedLogin_LC& from);
 
-  inline NewConnection_GL& operator=(const NewConnection_GL& from) {
+  inline ClientNeedLogin_LC& operator=(const ClientNeedLogin_LC& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  NewConnection_GL(NewConnection_GL&& from) noexcept
-    : NewConnection_GL() {
+  ClientNeedLogin_LC(ClientNeedLogin_LC&& from) noexcept
+    : ClientNeedLogin_LC() {
     *this = ::std::move(from);
   }
 
-  inline NewConnection_GL& operator=(NewConnection_GL&& from) noexcept {
+  inline ClientNeedLogin_LC& operator=(ClientNeedLogin_LC&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -116,34 +118,34 @@ class NewConnection_GL : public ::google::protobuf::Message /* @@protoc_insertio
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const NewConnection_GL& default_instance();
+  static const ClientNeedLogin_LC& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const NewConnection_GL* internal_default_instance() {
-    return reinterpret_cast<const NewConnection_GL*>(
-               &_NewConnection_GL_default_instance_);
+  static inline const ClientNeedLogin_LC* internal_default_instance() {
+    return reinterpret_cast<const ClientNeedLogin_LC*>(
+               &_ClientNeedLogin_LC_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  void Swap(NewConnection_GL* other);
-  friend void swap(NewConnection_GL& a, NewConnection_GL& b) {
+  void Swap(ClientNeedLogin_LC* other);
+  friend void swap(ClientNeedLogin_LC& a, ClientNeedLogin_LC& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline NewConnection_GL* New() const final {
-    return CreateMaybeMessage<NewConnection_GL>(NULL);
+  inline ClientNeedLogin_LC* New() const final {
+    return CreateMaybeMessage<ClientNeedLogin_LC>(NULL);
   }
 
-  NewConnection_GL* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<NewConnection_GL>(arena);
+  ClientNeedLogin_LC* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<ClientNeedLogin_LC>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const NewConnection_GL& from);
-  void MergeFrom(const NewConnection_GL& from);
+  void CopyFrom(const ClientNeedLogin_LC& from);
+  void MergeFrom(const ClientNeedLogin_LC& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -160,7 +162,7 @@ class NewConnection_GL : public ::google::protobuf::Message /* @@protoc_insertio
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(NewConnection_GL* other);
+  void InternalSwap(ClientNeedLogin_LC* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -176,23 +178,16 @@ class NewConnection_GL : public ::google::protobuf::Message /* @@protoc_insertio
 
   // accessors -------------------------------------------------------
 
-  // int32 hash = 1;
-  void clear_hash();
-  static const int kHashFieldNumber = 1;
-  ::google::protobuf::int32 hash() const;
-  void set_hash(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:LOGIN.NewConnection_GL)
+  // @@protoc_insertion_point(class_scope:Login.ClientNeedLogin_LC)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int32 hash_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_Login_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class ClientLogin_CL : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:LOGIN.ClientLogin_CL) */ {
+class ClientLogin_CL : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Login.ClientLogin_CL) */ {
  public:
   ClientLogin_CL();
   virtual ~ClientLogin_CL();
@@ -279,23 +274,38 @@ class ClientLogin_CL : public ::google::protobuf::Message /* @@protoc_insertion_
 
   // accessors -------------------------------------------------------
 
-  // int32 CODE_SIZE = 1;
-  void clear_code_size();
-  static const int kCODESIZEFieldNumber = 1;
-  ::google::protobuf::int32 code_size() const;
-  void set_code_size(::google::protobuf::int32 value);
+  // string SessionId = 2;
+  void clear_sessionid();
+  static const int kSessionIdFieldNumber = 2;
+  const ::std::string& sessionid() const;
+  void set_sessionid(const ::std::string& value);
+  #if LANG_CXX11
+  void set_sessionid(::std::string&& value);
+  #endif
+  void set_sessionid(const char* value);
+  void set_sessionid(const char* value, size_t size);
+  ::std::string* mutable_sessionid();
+  ::std::string* release_sessionid();
+  void set_allocated_sessionid(::std::string* sessionid);
 
-  // @@protoc_insertion_point(class_scope:LOGIN.ClientLogin_CL)
+  // int32 Code = 1;
+  void clear_code();
+  static const int kCodeFieldNumber = 1;
+  ::google::protobuf::int32 code() const;
+  void set_code(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:Login.ClientLogin_CL)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int32 code_size_;
+  ::google::protobuf::internal::ArenaStringPtr sessionid_;
+  ::google::protobuf::int32 code_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_Login_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class LoginState_LC : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:LOGIN.LoginState_LC) */ {
+class LoginState_LC : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Login.LoginState_LC) */ {
  public:
   LoginState_LC();
   virtual ~LoginState_LC();
@@ -383,8 +393,12 @@ class LoginState_LC : public ::google::protobuf::Message /* @@protoc_insertion_p
   typedef LoginState_LC_LoginState LoginState;
   static const LoginState SUCCESS =
     LoginState_LC_LoginState_SUCCESS;
-  static const LoginState ERROR =
-    LoginState_LC_LoginState_ERROR;
+  static const LoginState CODE_ERROR =
+    LoginState_LC_LoginState_CODE_ERROR;
+  static const LoginState BUSY_ERROR =
+    LoginState_LC_LoginState_BUSY_ERROR;
+  static const LoginState SESSION_ERROR =
+    LoginState_LC_LoginState_SESSION_ERROR;
   static inline bool LoginState_IsValid(int value) {
     return LoginState_LC_LoginState_IsValid(value);
   }
@@ -408,19 +422,19 @@ class LoginState_LC : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // accessors -------------------------------------------------------
 
-  // .LOGIN.LoginState_LC.LoginState state = 1;
+  // .Login.LoginState_LC.LoginState State = 1;
   void clear_state();
   static const int kStateFieldNumber = 1;
-  ::LOGIN::LoginState_LC_LoginState state() const;
-  void set_state(::LOGIN::LoginState_LC_LoginState value);
+  ::Login::LoginState_LC_LoginState state() const;
+  void set_state(::Login::LoginState_LC_LoginState value);
 
-  // int32 sessionId = 2;
+  // int32 SessionId = 2;
   void clear_sessionid();
   static const int kSessionIdFieldNumber = 2;
   ::google::protobuf::int32 sessionid() const;
   void set_sessionid(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:LOGIN.LoginState_LC)
+  // @@protoc_insertion_point(class_scope:Login.LoginState_LC)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -438,70 +452,109 @@ class LoginState_LC : public ::google::protobuf::Message /* @@protoc_insertion_p
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// NewConnection_GL
-
-// int32 hash = 1;
-inline void NewConnection_GL::clear_hash() {
-  hash_ = 0;
-}
-inline ::google::protobuf::int32 NewConnection_GL::hash() const {
-  // @@protoc_insertion_point(field_get:LOGIN.NewConnection_GL.hash)
-  return hash_;
-}
-inline void NewConnection_GL::set_hash(::google::protobuf::int32 value) {
-  
-  hash_ = value;
-  // @@protoc_insertion_point(field_set:LOGIN.NewConnection_GL.hash)
-}
+// ClientNeedLogin_LC
 
 // -------------------------------------------------------------------
 
 // ClientLogin_CL
 
-// int32 CODE_SIZE = 1;
-inline void ClientLogin_CL::clear_code_size() {
-  code_size_ = 0;
+// int32 Code = 1;
+inline void ClientLogin_CL::clear_code() {
+  code_ = 0;
 }
-inline ::google::protobuf::int32 ClientLogin_CL::code_size() const {
-  // @@protoc_insertion_point(field_get:LOGIN.ClientLogin_CL.CODE_SIZE)
-  return code_size_;
+inline ::google::protobuf::int32 ClientLogin_CL::code() const {
+  // @@protoc_insertion_point(field_get:Login.ClientLogin_CL.Code)
+  return code_;
 }
-inline void ClientLogin_CL::set_code_size(::google::protobuf::int32 value) {
+inline void ClientLogin_CL::set_code(::google::protobuf::int32 value) {
   
-  code_size_ = value;
-  // @@protoc_insertion_point(field_set:LOGIN.ClientLogin_CL.CODE_SIZE)
+  code_ = value;
+  // @@protoc_insertion_point(field_set:Login.ClientLogin_CL.Code)
+}
+
+// string SessionId = 2;
+inline void ClientLogin_CL::clear_sessionid() {
+  sessionid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& ClientLogin_CL::sessionid() const {
+  // @@protoc_insertion_point(field_get:Login.ClientLogin_CL.SessionId)
+  return sessionid_.GetNoArena();
+}
+inline void ClientLogin_CL::set_sessionid(const ::std::string& value) {
+  
+  sessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Login.ClientLogin_CL.SessionId)
+}
+#if LANG_CXX11
+inline void ClientLogin_CL::set_sessionid(::std::string&& value) {
+  
+  sessionid_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Login.ClientLogin_CL.SessionId)
+}
+#endif
+inline void ClientLogin_CL::set_sessionid(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  sessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Login.ClientLogin_CL.SessionId)
+}
+inline void ClientLogin_CL::set_sessionid(const char* value, size_t size) {
+  
+  sessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Login.ClientLogin_CL.SessionId)
+}
+inline ::std::string* ClientLogin_CL::mutable_sessionid() {
+  
+  // @@protoc_insertion_point(field_mutable:Login.ClientLogin_CL.SessionId)
+  return sessionid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ClientLogin_CL::release_sessionid() {
+  // @@protoc_insertion_point(field_release:Login.ClientLogin_CL.SessionId)
+  
+  return sessionid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ClientLogin_CL::set_allocated_sessionid(::std::string* sessionid) {
+  if (sessionid != NULL) {
+    
+  } else {
+    
+  }
+  sessionid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sessionid);
+  // @@protoc_insertion_point(field_set_allocated:Login.ClientLogin_CL.SessionId)
 }
 
 // -------------------------------------------------------------------
 
 // LoginState_LC
 
-// .LOGIN.LoginState_LC.LoginState state = 1;
+// .Login.LoginState_LC.LoginState State = 1;
 inline void LoginState_LC::clear_state() {
   state_ = 0;
 }
-inline ::LOGIN::LoginState_LC_LoginState LoginState_LC::state() const {
-  // @@protoc_insertion_point(field_get:LOGIN.LoginState_LC.state)
-  return static_cast< ::LOGIN::LoginState_LC_LoginState >(state_);
+inline ::Login::LoginState_LC_LoginState LoginState_LC::state() const {
+  // @@protoc_insertion_point(field_get:Login.LoginState_LC.State)
+  return static_cast< ::Login::LoginState_LC_LoginState >(state_);
 }
-inline void LoginState_LC::set_state(::LOGIN::LoginState_LC_LoginState value) {
+inline void LoginState_LC::set_state(::Login::LoginState_LC_LoginState value) {
   
   state_ = value;
-  // @@protoc_insertion_point(field_set:LOGIN.LoginState_LC.state)
+  // @@protoc_insertion_point(field_set:Login.LoginState_LC.State)
 }
 
-// int32 sessionId = 2;
+// int32 SessionId = 2;
 inline void LoginState_LC::clear_sessionid() {
   sessionid_ = 0;
 }
 inline ::google::protobuf::int32 LoginState_LC::sessionid() const {
-  // @@protoc_insertion_point(field_get:LOGIN.LoginState_LC.sessionId)
+  // @@protoc_insertion_point(field_get:Login.LoginState_LC.SessionId)
   return sessionid_;
 }
 inline void LoginState_LC::set_sessionid(::google::protobuf::int32 value) {
   
   sessionid_ = value;
-  // @@protoc_insertion_point(field_set:LOGIN.LoginState_LC.sessionId)
+  // @@protoc_insertion_point(field_set:Login.LoginState_LC.SessionId)
 }
 
 #ifdef __GNUC__
@@ -514,15 +567,15 @@ inline void LoginState_LC::set_sessionid(::google::protobuf::int32 value) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace LOGIN
+}  // namespace Login
 
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::LOGIN::LoginState_LC_LoginState> : ::std::true_type {};
+template <> struct is_proto_enum< ::Login::LoginState_LC_LoginState> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::LOGIN::LoginState_LC_LoginState>() {
-  return ::LOGIN::LoginState_LC_LoginState_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::Login::LoginState_LC_LoginState>() {
+  return ::Login::LoginState_LC_LoginState_descriptor();
 }
 
 }  // namespace protobuf

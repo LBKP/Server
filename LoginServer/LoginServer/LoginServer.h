@@ -1,4 +1,6 @@
 #pragma once
+#include <unordered_map>
+#include <list>
 #include <muduo/base/noncopyable.h>
 
 #include <muduo/net/EventLoop.h>
@@ -6,6 +8,7 @@
 
 #include "./Message/MessageRegister.h"
 #include "./Message/Gateway.pb.h"
+#include "./Message/Login.pb.h"
 #include "../../publlic/Codec.h"
 #include "../../publlic/MessageDispatcher.h"
 
@@ -37,16 +40,26 @@ private:
 		muduo::Timestamp);
 	void onClientConnected(const muduo::net::TcpConnectionPtr& conn,
 		const int hash,
-		const Gateway::ClientConnected_GS& message,
+		const std::shared_ptr <Gateway::ClientConnected_GS>& message,
 		muduo::Timestamp);
 	void onClientLogin(const muduo::net::TcpConnectionPtr& conn,
 		const int hash,
-		const Login::ClientLogin_CL& message,
+		const std::shared_ptr<Login::ClientLogin_CL>& message,
+		muduo::Timestamp);
+	void onServerConnectedGateway(const muduo::net::TcpConnectionPtr& conn,
+		const int hash,
+		const std::shared_ptr<Gateway::ServerConnected_GS>& message,
+		muduo::Timestamp);
+	void onReceivedAllServer(const muduo::net::TcpConnectionPtr& conn,
+		const int hash,
+		const std::shared_ptr<Gateway::AllConnectedServer_GS>& message,
 		muduo::Timestamp);
 private:
 	muduo::net::TcpClient connection_;
 	muduo::net::EventLoop* loop_;
 	ProtobufDispatcher dispatcher_;
 	ProtobufCodec codec_;
+
+	std::unordered_map<Gateway::ServerType, std::list<int32_t>> ServerMap_;
 };
 

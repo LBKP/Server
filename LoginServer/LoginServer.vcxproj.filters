@@ -54,6 +54,9 @@
     <ClInclude Include="LoginServer\LoginServer.h">
       <Filter>Server</Filter>
     </ClInclude>
+    <ClInclude Include="..\publlic\Curl.h">
+      <Filter>publlic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="LoginServer\Message\Gateway.proto">

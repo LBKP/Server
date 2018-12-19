@@ -1,4 +1,5 @@
 #include "LoginServer.h"
+#include <algorithm>
 
 using namespace std::placeholders;
 
@@ -14,10 +15,14 @@ LoginServer::LoginServer(muduo::net::EventLoop* loop,
 		std::bind(&LoginServer::onConnected, this, _1));
 	connection_.setMessageCallback(
 		std::bind(&ProtobufCodec::onMessage, &codec_, _1, _2, _3));
-	dispatcher_.register_callback<Gateway::ClientConnected_GS>(
-		std::bind(&LoginServer::onClientConnected, this, _1,_2,_3,_4));
+	dispatcher_.registerMessageCallback<Gateway::ClientConnected_GS>(
+		std::bind(&LoginServer::onClientConnected, this, _1, _2, _3, _4));
 	dispatcher_.registerMessageCallback<Login::ClientLogin_CL>(
 		std::bind(&LoginServer::onClientLogin, this, _1, _2, _3, _4));
+	dispatcher_.registerMessageCallback<Gateway::ServerConnected_GS>(
+		std::bind(&LoginServer::onServerConnectedGateway, this, _1, _2, _3, _4));
+	dispatcher_.registerMessageCallback<Gateway::AllConnectedServer_GS>(
+		std::bind(&LoginServer::onReceivedAllServer, this, _1, _2, _3, _4));
 }
 
 LoginServer::~LoginServer()
@@ -38,7 +43,7 @@ void LoginServer::onConnected(const muduo::net::TcpConnectionPtr& conn)
 		auto attr = msg.mutable_server();
 		attr->set_type(Gateway::LOGIN);
 		codec_.send(conn, 0, msg);
-		LOG_INFO << "Connected Gateway server " << connection_.connection()->getTcpInfoString();
+		LOG_INFO << "Connected Gateway server " << connection_.name();
 	}
 	else
 	{
@@ -49,12 +54,12 @@ void LoginServer::onConnected(const muduo::net::TcpConnectionPtr& conn)
 
 void LoginServer::onUnKnownMessage(const muduo::net::TcpConnectionPtr & conn, const int hash, const MessagePtr & message, muduo::Timestamp)
 {
-	LOG_ERROR << "Received a unKnown message name is " << message.
+	LOG_ERROR << "Received a unKnown message name is " << message->GetTypeName();
 }
 
-void LoginServer::onClientConnected(const muduo::net::TcpConnectionPtr& conn, const int hash, const Gateway::ClientConnected_GS& message, muduo::Timestamp)
+void LoginServer::onClientConnected(const muduo::net::TcpConnectionPtr& conn, const int hash, const std::shared_ptr <Gateway::ClientConnected_GS>& message, muduo::Timestamp)
 {
-	if (message.connected())
+	if (message->connected())
 	{
 		//user logout
 	}
@@ -62,14 +67,45 @@ void LoginServer::onClientConnected(const muduo::net::TcpConnectionPtr& conn, co
 	{
 		//user need login
 		Login::ClientNeedLogin_LC msg;
-		codec_.send(conn,hash,msg);
+		codec_.send(conn, hash, msg);
 	}
 }
 
-void LoginServer::onClientLogin(const muduo::net::TcpConnectionPtr& conn, const int hash, const Login::ClientLogin_CL& message, muduo::Timestamp)
+void LoginServer::onClientLogin(const muduo::net::TcpConnectionPtr& conn, const int hash, const std::shared_ptr <Login::ClientLogin_CL>& message, muduo::Timestamp)
 {
-	if(message->sessionid() != 0)
-	{
+	//if(message->sessionid() /*!= 0*/)
+	//{
 
+	//}
+}
+
+void LoginServer::onServerConnectedGateway(const muduo::net::TcpConnectionPtr & conn, const int hash, const std::shared_ptr<Gateway::ServerConnected_GS>& message, muduo::Timestamp)
+{
+	//just run in main thread don't need mutex
+	if (message->connected())
+	{
+		ServerMap_[message->server().type()].push_back(message->server().hash());
+	}
+	else
+	{
+		if (ServerMap_.find(message->server().type()) != ServerMap_.end())
+		{
+			ServerMap_[message->server().type()].remove_if(
+				[&message](int32_t value) {
+				if (value == message->server().hash())
+					return true;
+				else
+					return false; });
+		}
+	}
+}
+
+void LoginServer::onReceivedAllServer(const muduo::net::TcpConnectionPtr & conn, const int hash, const std::shared_ptr<Gateway::AllConnectedServer_GS>& message, muduo::Timestamp)
+{
+	LOG_INFO << "connected Gateway";
+	for (auto server : message->server())
+	{
+		//just run in main thread don't need mutex
+		ServerMap_[server.type()].push_back(server.hash());
 	}
 }
