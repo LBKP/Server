@@ -5,9 +5,9 @@
 #include <muduo/net/TcpConnection.h>
 
 #include <google/protobuf/message.h>
-
+   
 typedef std::shared_ptr<google::protobuf::Message> MessagePtr;
-
+      
 // struct ProtobufTransportFormat __attribute__ ((__packed__))
 // {
 //   int32_t  len;
