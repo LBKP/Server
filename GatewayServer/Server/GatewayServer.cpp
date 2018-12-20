@@ -299,7 +299,7 @@ void GatewayServer::sendAllConnectedServer(int hash)
 void GatewayServer::onServerRegister(const muduo::net::TcpConnectionPtr& conn, int hash, const std::shared_ptr<Gateway::ServerRegister_SG>& message, muduo::Timestamp)
 {
 	int serverType = message->server().type();
-	for (int hash = serverType * 10; hash < serverType * 10 + 10; hash++)
+	for (int hash = serverType * 10 + 1; hash < serverType * 10 + 10; hash++)
 	{
 		//find a unused hash
 		if (Connections_.find(hash) == Connections_.end())
