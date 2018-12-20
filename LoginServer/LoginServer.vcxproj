@@ -91,6 +91,7 @@
   <ItemGroup>
     <ClCompile Include="..\publlic\Codec.cpp" />
     <ClCompile Include="..\publlic\Config.cpp" />
+    <ClCompile Include="..\publlic\Curl.cpp" />
     <ClCompile Include="LoginServer\LoginServer.cpp" />
     <ClCompile Include="LoginServer\Message\Gateway.pb.cc" />
     <ClCompile Include="LoginServer\Message\Login.pb.cc" />
@@ -125,7 +126,7 @@
       <CppAdditionalWarning>switch;no-deprecated-declarations;empty-body;return-type;parentheses;no-format;uninitialized;unreachable-code;unused-function;unused-value;unused-variable</CppAdditionalWarning>
     </ClCompile>
     <Link>
-      <LibraryDependencies>protobuf;muduo_net;muduo_wss;muduo_base;pthread;dl;ssl;crypto;z;</LibraryDependencies>
+      <LibraryDependencies>protobuf;muduo_net;muduo_wss;muduo_base;pthread;dl;ssl;crypto;z;curl</LibraryDependencies>
       <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(Link.AdditionalLibraryDirectories);/home/ubuntu/build/debug-install-cpp17/lib</AdditionalLibraryDirectories>
       <VerboseOutput>false</VerboseOutput>

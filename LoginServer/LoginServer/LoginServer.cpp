@@ -48,7 +48,7 @@ void LoginServer::onConnected(const muduo::net::TcpConnectionPtr& conn)
 	else
 	{
 		LOG_ERROR << "Connection is disable, and try to reconnected";
-		connection_.connect();
+		connection_.enableRetry();
 	}
 }
 
@@ -63,7 +63,7 @@ void LoginServer::onClientConnected(const muduo::net::TcpConnectionPtr& conn, co
 	{
 		//user need login
 		Login::ClientNeedLogin_LC msg;
-		codec_.send(conn, hash, msg);
+		codec_.send(conn, message->hash(), msg);
 	}
 	else
 	{
