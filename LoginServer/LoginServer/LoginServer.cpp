@@ -61,13 +61,13 @@ void LoginServer::onClientConnected(const muduo::net::TcpConnectionPtr& conn, co
 {
 	if (message->connected())
 	{
-		//user logout
-	}
-	else
-	{
 		//user need login
 		Login::ClientNeedLogin_LC msg;
 		codec_.send(conn, hash, msg);
+	}
+	else
+	{
+		//user logout
 	}
 }
 
