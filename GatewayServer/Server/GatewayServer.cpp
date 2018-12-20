@@ -88,7 +88,7 @@ void GatewayServer::onClientConnection(const muduo::net::TcpConnectionPtr &conn)
 		}
 		else
 		{
-			conn->shutdown();
+			conn->forceClose();
 			LOG_ERROR << "can not found a login server";
 		}
 	}
@@ -104,7 +104,8 @@ void GatewayServer::onClientConnection(const muduo::net::TcpConnectionPtr &conn)
 		Gateway::ClientConnected_GS msg;
 		msg.set_hash(hash);
 		msg.set_connected(false);
-		codec_.send(Connections_[1], 0, msg);
+		if (Connections_.find(1) != Connections_.end())
+			codec_.send(Connections_[1], 0, msg);
 		LOG_INFO << "User " << conn->getTcpInfoString() << " Disconnected and this hash is " << hash;
 	}
 }
@@ -136,7 +137,7 @@ void GatewayServer::onClientMessage(const muduo::net::TcpConnectionPtr& conn, mu
 	int checkSum = adler32(1, reinterpret_cast<const Bytef*>(buffer + kHeaderLen), len - kHeaderLen);
 	if (checkSum == readAInt32(buffer + len))
 	{
-		
+
 		int32_t newhash = muduo::net::sockets::hostToNetwork32(std::any_cast<int>(conn->getContext()));
 		memcpy(const_cast<char*>(buffer + kHeaderLen), &newhash, sizeof(int32_t));
 		//don't need checksum 
@@ -204,7 +205,7 @@ void GatewayServer::onServerMessage(const muduo::net::TcpConnectionPtr &conn, mu
 	{
 		return;
 	}
-	
+
 	int hash = readAInt32(buf->peek() + kHeaderLen);
 	if (hash == 0)
 	{
@@ -239,7 +240,7 @@ void GatewayServer::onServerMessage(const muduo::net::TcpConnectionPtr &conn, mu
 			LOG_ERROR << "This server haven't register" << conn->getTcpInfoString();
 			conn->shutdown();
 		}
-		
+
 		//send
 		muduo::net::TcpConnectionPtr target;
 		{
@@ -303,9 +304,9 @@ void GatewayServer::onServerRegister(const muduo::net::TcpConnectionPtr& conn, i
 	{
 		//find a unused hash
 		if (Connections_.find(hash) == Connections_.end())
-		{ 
+		{
 			broadcastNewServerConnected(hash);
-			
+
 			{
 				muduo::MutexLockGuard lock(mutex_);
 				Connections_[hash] = conn;
