@@ -274,6 +274,20 @@ class ClientLogin_CL : public ::google::protobuf::Message /* @@protoc_insertion_
 
   // accessors -------------------------------------------------------
 
+  // string Code = 1;
+  void clear_code();
+  static const int kCodeFieldNumber = 1;
+  const ::std::string& code() const;
+  void set_code(const ::std::string& value);
+  #if LANG_CXX11
+  void set_code(::std::string&& value);
+  #endif
+  void set_code(const char* value);
+  void set_code(const char* value, size_t size);
+  ::std::string* mutable_code();
+  ::std::string* release_code();
+  void set_allocated_code(::std::string* code);
+
   // string SessionId = 2;
   void clear_sessionid();
   static const int kSessionIdFieldNumber = 2;
@@ -288,18 +302,12 @@ class ClientLogin_CL : public ::google::protobuf::Message /* @@protoc_insertion_
   ::std::string* release_sessionid();
   void set_allocated_sessionid(::std::string* sessionid);
 
-  // int32 Code = 1;
-  void clear_code();
-  static const int kCodeFieldNumber = 1;
-  ::google::protobuf::int32 code() const;
-  void set_code(::google::protobuf::int32 value);
-
   // @@protoc_insertion_point(class_scope:Login.ClientLogin_CL)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr code_;
   ::google::protobuf::internal::ArenaStringPtr sessionid_;
-  ::google::protobuf::int32 code_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_Login_2eproto::TableStruct;
 };
@@ -458,18 +466,57 @@ class LoginState_LC : public ::google::protobuf::Message /* @@protoc_insertion_p
 
 // ClientLogin_CL
 
-// int32 Code = 1;
+// string Code = 1;
 inline void ClientLogin_CL::clear_code() {
-  code_ = 0;
+  code_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::int32 ClientLogin_CL::code() const {
+inline const ::std::string& ClientLogin_CL::code() const {
   // @@protoc_insertion_point(field_get:Login.ClientLogin_CL.Code)
-  return code_;
+  return code_.GetNoArena();
 }
-inline void ClientLogin_CL::set_code(::google::protobuf::int32 value) {
+inline void ClientLogin_CL::set_code(const ::std::string& value) {
   
-  code_ = value;
+  code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:Login.ClientLogin_CL.Code)
+}
+#if LANG_CXX11
+inline void ClientLogin_CL::set_code(::std::string&& value) {
+  
+  code_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Login.ClientLogin_CL.Code)
+}
+#endif
+inline void ClientLogin_CL::set_code(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Login.ClientLogin_CL.Code)
+}
+inline void ClientLogin_CL::set_code(const char* value, size_t size) {
+  
+  code_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Login.ClientLogin_CL.Code)
+}
+inline ::std::string* ClientLogin_CL::mutable_code() {
+  
+  // @@protoc_insertion_point(field_mutable:Login.ClientLogin_CL.Code)
+  return code_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ClientLogin_CL::release_code() {
+  // @@protoc_insertion_point(field_release:Login.ClientLogin_CL.Code)
+  
+  return code_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ClientLogin_CL::set_allocated_code(::std::string* code) {
+  if (code != NULL) {
+    
+  } else {
+    
+  }
+  code_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), code);
+  // @@protoc_insertion_point(field_set_allocated:Login.ClientLogin_CL.Code)
 }
 
 // string SessionId = 2;

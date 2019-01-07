@@ -8,7 +8,7 @@ message ClientNeedLogin_LC
 
 message ClientLogin_CL
 {
-	int32  Code = 1;
+	string Code = 1;
 	string SessionId = 2;
 }
 

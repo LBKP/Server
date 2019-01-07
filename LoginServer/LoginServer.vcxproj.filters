@@ -31,7 +31,9 @@
     <ClCompile Include="LoginServer\LoginServer.cpp">
       <Filter>Server</Filter>
     </ClCompile>
-    <ClCompile Include="..\publlic\Curl.cpp" />
+    <ClCompile Include="..\publlic\Curl.cpp">
+      <Filter>publlic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\publlic\Config.h">
