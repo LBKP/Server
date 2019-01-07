@@ -29,7 +29,7 @@ GatewayServer::GatewayServer(muduo::net::EventLoop *loop,
 	dispatcher_(std::bind(&GatewayServer::onUnKnownMessage, this, _1, _2, _3, _4)),
 	codec_(std::bind(&ProtobufDispatcher::onProtobufMessage, &dispatcher_, _1, _2, _3, _4))
 {
-	websocketServer_->setOpcode(Opcode::BINARY_FRAME);
+	websocketServer_.setOpcode(muduo::net::wss::Opcode::BINARY_FRAME);
 	websocketServer_.setConnectionCallback(
 		std::bind(&GatewayServer::onClientConnection, this, _1));
 	websocketServer_.setMessageCallback(
