@@ -121,7 +121,7 @@
     <Link>
       <LibraryDependencies>protobuf;muduo_net;muduo_wss;muduo_base;pthread;dl;ssl;crypto;z;</LibraryDependencies>
       <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(Link.AdditionalLibraryDirectories);/home/ubuntu/build/debug-install-cpp17/lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(Link.AdditionalLibraryDirectories);/root//build/release-install-cpp17/lib</AdditionalLibraryDirectories>
       <VerboseOutput>false</VerboseOutput>
     </Link>
   </ItemDefinitionGroup>

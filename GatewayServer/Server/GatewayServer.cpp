@@ -142,7 +142,7 @@ void GatewayServer::onClientMessage(const muduo::net::TcpConnectionPtr& conn, mu
 		int32_t newhash = muduo::net::sockets::hostToNetwork32(std::any_cast<int>(conn->getContext()));
 		memcpy(const_cast<char*>(buffer + kHeaderLen), &newhash, sizeof(int32_t));
 		//don't need checksum 
-		int32_t newLen = len - kHeaderLen;
+		int32_t newLen = muduo::net::sockets::hostToNetwork32(len - kHeaderLen);
 		memcpy(const_cast<char*>(buffer), &newLen, sizeof(int32_t));
 		sendBuf.unwrite(sizeof(int32_t));
 		muduo::net::TcpConnectionPtr target;

@@ -6,56 +6,44 @@
 #include <algorithm>
 
 #include <google/protobuf/stubs/common.h>
-#include <google/protobuf/stubs/port.h>
 #include <google/protobuf/io/coded_stream.h>
+#include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite_inl.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/reflection_ops.h>
 #include <google/protobuf/wire_format.h>
-// This is a temporary google only hack
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-#include "third_party/protobuf/version.h"
-#endif
 // @@protoc_insertion_point(includes)
+#include <google/protobuf/port_def.inc>
 
-namespace protobuf_Gateway_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_Gateway_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_ServerAttr;
-}  // namespace protobuf_Gateway_2eproto
+extern PROTOBUF_INTERNAL_EXPORT_Gateway_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_ServerAttr_Gateway_2eproto;
 namespace Gateway {
 class ServerAttrDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<ServerAttr>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<ServerAttr> _instance;
 } _ServerAttr_default_instance_;
 class ServerRegister_SGDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<ServerRegister_SG>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<ServerRegister_SG> _instance;
 } _ServerRegister_SG_default_instance_;
 class ServerConnected_GSDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<ServerConnected_GS>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<ServerConnected_GS> _instance;
 } _ServerConnected_GS_default_instance_;
 class MessageError_GDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<MessageError_G>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<MessageError_G> _instance;
 } _MessageError_G_default_instance_;
 class ClientConnected_GSDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<ClientConnected_GS>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<ClientConnected_GS> _instance;
 } _ClientConnected_GS_default_instance_;
 class AllConnectedServer_GSDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<AllConnectedServer_GS>
-      _instance;
+  ::google::protobuf::internal::ExplicitlyConstructed<AllConnectedServer_GS> _instance;
 } _AllConnectedServer_GS_default_instance_;
 }  // namespace Gateway
-namespace protobuf_Gateway_2eproto {
-static void InitDefaultsServerAttr() {
+static void InitDefaultsServerAttr_Gateway_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -66,10 +54,10 @@ static void InitDefaultsServerAttr() {
   ::Gateway::ServerAttr::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_ServerAttr =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsServerAttr}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_ServerAttr_Gateway_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsServerAttr_Gateway_2eproto}, {}};
 
-static void InitDefaultsServerRegister_SG() {
+static void InitDefaultsServerRegister_SG_Gateway_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -80,11 +68,11 @@ static void InitDefaultsServerRegister_SG() {
   ::Gateway::ServerRegister_SG::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_ServerRegister_SG =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsServerRegister_SG}, {
-      &protobuf_Gateway_2eproto::scc_info_ServerAttr.base,}};
+::google::protobuf::internal::SCCInfo<1> scc_info_ServerRegister_SG_Gateway_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsServerRegister_SG_Gateway_2eproto}, {
+      &scc_info_ServerAttr_Gateway_2eproto.base,}};
 
-static void InitDefaultsServerConnected_GS() {
+static void InitDefaultsServerConnected_GS_Gateway_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -95,11 +83,11 @@ static void InitDefaultsServerConnected_GS() {
   ::Gateway::ServerConnected_GS::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_ServerConnected_GS =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsServerConnected_GS}, {
-      &protobuf_Gateway_2eproto::scc_info_ServerAttr.base,}};
+::google::protobuf::internal::SCCInfo<1> scc_info_ServerConnected_GS_Gateway_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsServerConnected_GS_Gateway_2eproto}, {
+      &scc_info_ServerAttr_Gateway_2eproto.base,}};
 
-static void InitDefaultsMessageError_G() {
+static void InitDefaultsMessageError_G_Gateway_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -110,10 +98,10 @@ static void InitDefaultsMessageError_G() {
   ::Gateway::MessageError_G::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_MessageError_G =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMessageError_G}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_MessageError_G_Gateway_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMessageError_G_Gateway_2eproto}, {}};
 
-static void InitDefaultsClientConnected_GS() {
+static void InitDefaultsClientConnected_GS_Gateway_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -124,10 +112,10 @@ static void InitDefaultsClientConnected_GS() {
   ::Gateway::ClientConnected_GS::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_ClientConnected_GS =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsClientConnected_GS}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_ClientConnected_GS_Gateway_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsClientConnected_GS_Gateway_2eproto}, {}};
 
-static void InitDefaultsAllConnectedServer_GS() {
+static void InitDefaultsAllConnectedServer_GS_Gateway_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
@@ -138,64 +126,65 @@ static void InitDefaultsAllConnectedServer_GS() {
   ::Gateway::AllConnectedServer_GS::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_AllConnectedServer_GS =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsAllConnectedServer_GS}, {
-      &protobuf_Gateway_2eproto::scc_info_ServerAttr.base,}};
+::google::protobuf::internal::SCCInfo<1> scc_info_AllConnectedServer_GS_Gateway_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsAllConnectedServer_GS_Gateway_2eproto}, {
+      &scc_info_ServerAttr_Gateway_2eproto.base,}};
 
-void InitDefaults() {
-  ::google::protobuf::internal::InitSCC(&scc_info_ServerAttr.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_ServerRegister_SG.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_ServerConnected_GS.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_MessageError_G.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_ClientConnected_GS.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_AllConnectedServer_GS.base);
+void InitDefaults_Gateway_2eproto() {
+  ::google::protobuf::internal::InitSCC(&scc_info_ServerAttr_Gateway_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_ServerRegister_SG_Gateway_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_ServerConnected_GS_Gateway_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_MessageError_G_Gateway_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_ClientConnected_GS_Gateway_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_AllConnectedServer_GS_Gateway_2eproto.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[6];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
+::google::protobuf::Metadata file_level_metadata_Gateway_2eproto[6];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors_Gateway_2eproto[2];
+constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_Gateway_2eproto = nullptr;
 
-const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+const ::google::protobuf::uint32 TableStruct_Gateway_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::ServerAttr, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::ServerAttr, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::ServerAttr, hash_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::ServerAttr, type_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::ServerAttr, hash_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::ServerAttr, type_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::ServerRegister_SG, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::ServerRegister_SG, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::ServerRegister_SG, server_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::ServerRegister_SG, server_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::ServerConnected_GS, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::ServerConnected_GS, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::ServerConnected_GS, server_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::ServerConnected_GS, connected_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::ServerConnected_GS, server_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::ServerConnected_GS, connected_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::MessageError_G, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::MessageError_G, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::MessageError_G, error_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::MessageError_G, error_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::ClientConnected_GS, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::ClientConnected_GS, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::ClientConnected_GS, hash_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::ClientConnected_GS, connected_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::ClientConnected_GS, hash_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::ClientConnected_GS, connected_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::AllConnectedServer_GS, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::AllConnectedServer_GS, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Gateway::AllConnectedServer_GS, server_),
+  PROTOBUF_FIELD_OFFSET(::Gateway::AllConnectedServer_GS, server_),
 };
-static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Gateway::ServerAttr)},
   { 7, -1, sizeof(::Gateway::ServerRegister_SG)},
   { 13, -1, sizeof(::Gateway::ServerConnected_GS)},
@@ -213,63 +202,47 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::Gateway::_AllConnectedServer_GS_default_instance_),
 };
 
-void protobuf_AssignDescriptors() {
-  AddDescriptors();
-  AssignDescriptors(
-      "Gateway.proto", schemas, file_default_instances, TableStruct::offsets,
-      file_level_metadata, file_level_enum_descriptors, NULL);
-}
+::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_Gateway_2eproto = {
+  {}, AddDescriptors_Gateway_2eproto, "Gateway.proto", schemas,
+  file_default_instances, TableStruct_Gateway_2eproto::offsets,
+  file_level_metadata_Gateway_2eproto, 6, file_level_enum_descriptors_Gateway_2eproto, file_level_service_descriptors_Gateway_2eproto,
+};
 
-void protobuf_AssignDescriptorsOnce() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
-}
+const char descriptor_table_protodef_Gateway_2eproto[] =
+  "\n\rGateway.proto\022\007Gateway\"=\n\nServerAttr\022\014"
+  "\n\004hash\030\001 \001(\005\022!\n\004type\030\002 \001(\0162\023.Gateway.Ser"
+  "verType\"8\n\021ServerRegister_SG\022#\n\006server\030\001"
+  " \001(\0132\023.Gateway.ServerAttr\"L\n\022ServerConne"
+  "cted_GS\022#\n\006server\030\001 \001(\0132\023.Gateway.Server"
+  "Attr\022\021\n\tconnected\030\002 \001(\010\"\216\001\n\016MessageError"
+  "_G\0220\n\005error\030\001 \001(\0162!.Gateway.MessageError"
+  "_G.ErrorType\"J\n\tErrorType\022\016\n\nHASH_ERROR\020"
+  "\000\022\030\n\024MESSAGE_FORMAT_ERROR\020\001\022\023\n\017CHECK_SUM"
+  "_ERROR\020\002\"5\n\022ClientConnected_GS\022\014\n\004hash\030\001"
+  " \001(\005\022\021\n\tconnected\030\002 \001(\010\"<\n\025AllConnectedS"
+  "erver_GS\022#\n\006server\030\001 \003(\0132\023.Gateway.Serve"
+  "rAttr*\"\n\nServerType\022\t\n\005LOGIN\020\000\022\t\n\005LOBBY\020"
+  "\001b\006proto3"
+  ;
+::google::protobuf::internal::DescriptorTable descriptor_table_Gateway_2eproto = {
+  false, InitDefaults_Gateway_2eproto, 
+  descriptor_table_protodef_Gateway_2eproto,
+  "Gateway.proto", &assign_descriptors_table_Gateway_2eproto, 529,
+};
 
-void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
-void protobuf_RegisterTypes(const ::std::string&) {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 6);
-}
-
-void AddDescriptorsImpl() {
-  InitDefaults();
-  static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\rGateway.proto\022\007Gateway\"=\n\nServerAttr\022\014"
-      "\n\004hash\030\001 \001(\005\022!\n\004type\030\002 \001(\0162\023.Gateway.Ser"
-      "verType\"8\n\021ServerRegister_SG\022#\n\006server\030\001"
-      " \001(\0132\023.Gateway.ServerAttr\"L\n\022ServerConne"
-      "cted_GS\022#\n\006server\030\001 \001(\0132\023.Gateway.Server"
-      "Attr\022\021\n\tconnected\030\002 \001(\010\"\216\001\n\016MessageError"
-      "_G\0220\n\005error\030\001 \001(\0162!.Gateway.MessageError"
-      "_G.ErrorType\"J\n\tErrorType\022\016\n\nHASH_ERROR\020"
-      "\000\022\030\n\024MESSAGE_FORMAT_ERROR\020\001\022\023\n\017CHECK_SUM"
-      "_ERROR\020\002\"5\n\022ClientConnected_GS\022\014\n\004hash\030\001"
-      " \001(\005\022\021\n\tconnected\030\002 \001(\010\"<\n\025AllConnectedS"
-      "erver_GS\022#\n\006server\030\001 \003(\0132\023.Gateway.Serve"
-      "rAttr*\"\n\nServerType\022\t\n\005LOGIN\020\000\022\t\n\005LOBBY\020"
-      "\001b\006proto3"
+void AddDescriptors_Gateway_2eproto() {
+  static constexpr ::google::protobuf::internal::InitFunc deps[1] =
+  {
   };
-  ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 529);
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
-    "Gateway.proto", &protobuf_RegisterTypes);
+ ::google::protobuf::internal::AddDescriptors(&descriptor_table_Gateway_2eproto, deps, 0);
 }
 
-void AddDescriptors() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
-}
-// Force AddDescriptors() to be called at dynamic initialization time.
-struct StaticDescriptorInitializer {
-  StaticDescriptorInitializer() {
-    AddDescriptors();
-  }
-} static_descriptor_initializer;
-}  // namespace protobuf_Gateway_2eproto
+// Force running AddDescriptors() at dynamic initialization time.
+static bool dynamic_init_dummy_Gateway_2eproto = []() { AddDescriptors_Gateway_2eproto(); return true; }();
 namespace Gateway {
 const ::google::protobuf::EnumDescriptor* MessageError_G_ErrorType_descriptor() {
-  protobuf_Gateway_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_Gateway_2eproto::file_level_enum_descriptors[0];
+  ::google::protobuf::internal::AssignDescriptors(&assign_descriptors_table_Gateway_2eproto);
+  return file_level_enum_descriptors_Gateway_2eproto[0];
 }
 bool MessageError_G_ErrorType_IsValid(int value) {
   switch (value) {
@@ -291,8 +264,8 @@ const MessageError_G_ErrorType MessageError_G::ErrorType_MAX;
 const int MessageError_G::ErrorType_ARRAYSIZE;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 const ::google::protobuf::EnumDescriptor* ServerType_descriptor() {
-  protobuf_Gateway_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_Gateway_2eproto::file_level_enum_descriptors[1];
+  ::google::protobuf::internal::AssignDescriptors(&assign_descriptors_table_Gateway_2eproto);
+  return file_level_enum_descriptors_Gateway_2eproto[1];
 }
 bool ServerType_IsValid(int value) {
   switch (value) {
@@ -309,21 +282,23 @@ bool ServerType_IsValid(int value) {
 
 void ServerAttr::InitAsDefaultInstance() {
 }
+class ServerAttr::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int ServerAttr::kHashFieldNumber;
 const int ServerAttr::kTypeFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ServerAttr::ServerAttr()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_Gateway_2eproto::scc_info_ServerAttr.base);
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:Gateway.ServerAttr)
 }
 ServerAttr::ServerAttr(const ServerAttr& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&hash_, &from.hash_,
     static_cast<size_t>(reinterpret_cast<char*>(&type_) -
@@ -348,13 +323,8 @@ void ServerAttr::SharedDtor() {
 void ServerAttr::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* ServerAttr::descriptor() {
-  ::protobuf_Gateway_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_Gateway_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const ServerAttr& ServerAttr::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_Gateway_2eproto::scc_info_ServerAttr.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_ServerAttr_Gateway_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -371,9 +341,54 @@ void ServerAttr::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* ServerAttr::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<ServerAttr*>(object);
+  ::google::protobuf::int32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::uint32 tag;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // int32 hash = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        msg->set_hash(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // .Gateway.ServerType type = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val = ::google::protobuf::internal::ReadVarint(&ptr);
+        msg->set_type(static_cast<::Gateway::ServerType>(val));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->EndGroup(tag);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool ServerAttr::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:Gateway.ServerAttr)
   for (;;) {
@@ -383,8 +398,7 @@ bool ServerAttr::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // int32 hash = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -397,9 +411,8 @@ bool ServerAttr::MergePartialFromCodedStream(
 
       // .Gateway.ServerType type = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-          int value;
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+          int value = 0;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
@@ -429,6 +442,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void ServerAttr::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -447,16 +461,15 @@ void ServerAttr::SerializeWithCachedSizes(
       2, this->type(), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:Gateway.ServerAttr)
 }
 
 ::google::protobuf::uint8* ServerAttr::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+    ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:Gateway.ServerAttr)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -472,9 +485,9 @@ void ServerAttr::SerializeWithCachedSizes(
       2, this->type(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:Gateway.ServerAttr)
   return target;
@@ -484,11 +497,15 @@ size_t ServerAttr::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:Gateway.ServerAttr)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // int32 hash = 1;
   if (this->hash() != 0) {
     total_size += 1 +
@@ -511,9 +528,9 @@ void ServerAttr::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:Gateway.ServerAttr)
   GOOGLE_DCHECK_NE(&from, this);
   const ServerAttr* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const ServerAttr>(
+      ::google::protobuf::DynamicCastToGenerated<ServerAttr>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:Gateway.ServerAttr)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
@@ -561,14 +578,14 @@ void ServerAttr::Swap(ServerAttr* other) {
 }
 void ServerAttr::InternalSwap(ServerAttr* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(hash_, other->hash_);
   swap(type_, other->type_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata ServerAttr::GetMetadata() const {
-  protobuf_Gateway_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_Gateway_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_Gateway_2eproto);
+  return ::file_level_metadata_Gateway_2eproto[kIndexInFileMessages];
 }
 
 
@@ -578,31 +595,40 @@ void ServerRegister_SG::InitAsDefaultInstance() {
   ::Gateway::_ServerRegister_SG_default_instance_._instance.get_mutable()->server_ = const_cast< ::Gateway::ServerAttr*>(
       ::Gateway::ServerAttr::internal_default_instance());
 }
+class ServerRegister_SG::HasBitSetters {
+ public:
+  static const ::Gateway::ServerAttr& server(const ServerRegister_SG* msg);
+};
+
+const ::Gateway::ServerAttr&
+ServerRegister_SG::HasBitSetters::server(const ServerRegister_SG* msg) {
+  return *msg->server_;
+}
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int ServerRegister_SG::kServerFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ServerRegister_SG::ServerRegister_SG()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_Gateway_2eproto::scc_info_ServerRegister_SG.base);
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:Gateway.ServerRegister_SG)
 }
 ServerRegister_SG::ServerRegister_SG(const ServerRegister_SG& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.has_server()) {
     server_ = new ::Gateway::ServerAttr(*from.server_);
   } else {
-    server_ = NULL;
+    server_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:Gateway.ServerRegister_SG)
 }
 
 void ServerRegister_SG::SharedCtor() {
-  server_ = NULL;
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_ServerRegister_SG_Gateway_2eproto.base);
+  server_ = nullptr;
 }
 
 ServerRegister_SG::~ServerRegister_SG() {
@@ -617,13 +643,8 @@ void ServerRegister_SG::SharedDtor() {
 void ServerRegister_SG::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* ServerRegister_SG::descriptor() {
-  ::protobuf_Gateway_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_Gateway_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const ServerRegister_SG& ServerRegister_SG::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_Gateway_2eproto::scc_info_ServerRegister_SG.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_ServerRegister_SG_Gateway_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -634,16 +655,62 @@ void ServerRegister_SG::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArenaNoVirtual() == NULL && server_ != NULL) {
+  if (GetArenaNoVirtual() == nullptr && server_ != nullptr) {
     delete server_;
   }
-  server_ = NULL;
+  server_ = nullptr;
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* ServerRegister_SG::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<ServerRegister_SG*>(object);
+  ::google::protobuf::int32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::uint32 tag;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // .Gateway.ServerAttr server = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        parser_till_end = ::Gateway::ServerAttr::_InternalParse;
+        object = msg->mutable_server();
+        if (size > end - ptr) goto len_delim_till_end;
+        ptr += size;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
+            {parser_till_end, object}, ptr - size, ptr));
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->EndGroup(tag);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+len_delim_till_end:
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                               {parser_till_end, object}, size);
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool ServerRegister_SG::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:Gateway.ServerRegister_SG)
   for (;;) {
@@ -653,8 +720,7 @@ bool ServerRegister_SG::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // .Gateway.ServerAttr server = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_server()));
         } else {
@@ -682,6 +748,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void ServerRegister_SG::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -692,19 +759,18 @@ void ServerRegister_SG::SerializeWithCachedSizes(
   // .Gateway.ServerAttr server = 1;
   if (this->has_server()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->_internal_server(), output);
+      1, HasBitSetters::server(this), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:Gateway.ServerRegister_SG)
 }
 
 ::google::protobuf::uint8* ServerRegister_SG::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+    ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:Gateway.ServerRegister_SG)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -713,12 +779,12 @@ void ServerRegister_SG::SerializeWithCachedSizes(
   if (this->has_server()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        1, this->_internal_server(), deterministic, target);
+        1, HasBitSetters::server(this), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:Gateway.ServerRegister_SG)
   return target;
@@ -728,11 +794,15 @@ size_t ServerRegister_SG::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:Gateway.ServerRegister_SG)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // .Gateway.ServerAttr server = 1;
   if (this->has_server()) {
     total_size += 1 +
@@ -749,9 +819,9 @@ void ServerRegister_SG::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:Gateway.ServerRegister_SG)
   GOOGLE_DCHECK_NE(&from, this);
   const ServerRegister_SG* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const ServerRegister_SG>(
+      ::google::protobuf::DynamicCastToGenerated<ServerRegister_SG>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:Gateway.ServerRegister_SG)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
@@ -796,13 +866,13 @@ void ServerRegister_SG::Swap(ServerRegister_SG* other) {
 }
 void ServerRegister_SG::InternalSwap(ServerRegister_SG* other) {
   using std::swap;
-  swap(server_, other->server_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(server_, other->server_);
 }
 
 ::google::protobuf::Metadata ServerRegister_SG::GetMetadata() const {
-  protobuf_Gateway_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_Gateway_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_Gateway_2eproto);
+  return ::file_level_metadata_Gateway_2eproto[kIndexInFileMessages];
 }
 
 
@@ -812,32 +882,41 @@ void ServerConnected_GS::InitAsDefaultInstance() {
   ::Gateway::_ServerConnected_GS_default_instance_._instance.get_mutable()->server_ = const_cast< ::Gateway::ServerAttr*>(
       ::Gateway::ServerAttr::internal_default_instance());
 }
+class ServerConnected_GS::HasBitSetters {
+ public:
+  static const ::Gateway::ServerAttr& server(const ServerConnected_GS* msg);
+};
+
+const ::Gateway::ServerAttr&
+ServerConnected_GS::HasBitSetters::server(const ServerConnected_GS* msg) {
+  return *msg->server_;
+}
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int ServerConnected_GS::kServerFieldNumber;
 const int ServerConnected_GS::kConnectedFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ServerConnected_GS::ServerConnected_GS()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_Gateway_2eproto::scc_info_ServerConnected_GS.base);
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:Gateway.ServerConnected_GS)
 }
 ServerConnected_GS::ServerConnected_GS(const ServerConnected_GS& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.has_server()) {
     server_ = new ::Gateway::ServerAttr(*from.server_);
   } else {
-    server_ = NULL;
+    server_ = nullptr;
   }
   connected_ = from.connected_;
   // @@protoc_insertion_point(copy_constructor:Gateway.ServerConnected_GS)
 }
 
 void ServerConnected_GS::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_ServerConnected_GS_Gateway_2eproto.base);
   ::memset(&server_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&connected_) -
       reinterpret_cast<char*>(&server_)) + sizeof(connected_));
@@ -855,13 +934,8 @@ void ServerConnected_GS::SharedDtor() {
 void ServerConnected_GS::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* ServerConnected_GS::descriptor() {
-  ::protobuf_Gateway_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_Gateway_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const ServerConnected_GS& ServerConnected_GS::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_Gateway_2eproto::scc_info_ServerConnected_GS.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_ServerConnected_GS_Gateway_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -872,17 +946,70 @@ void ServerConnected_GS::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArenaNoVirtual() == NULL && server_ != NULL) {
+  if (GetArenaNoVirtual() == nullptr && server_ != nullptr) {
     delete server_;
   }
-  server_ = NULL;
+  server_ = nullptr;
   connected_ = false;
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* ServerConnected_GS::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<ServerConnected_GS*>(object);
+  ::google::protobuf::int32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::uint32 tag;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // .Gateway.ServerAttr server = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        parser_till_end = ::Gateway::ServerAttr::_InternalParse;
+        object = msg->mutable_server();
+        if (size > end - ptr) goto len_delim_till_end;
+        ptr += size;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
+            {parser_till_end, object}, ptr - size, ptr));
+        break;
+      }
+      // bool connected = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        msg->set_connected(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->EndGroup(tag);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+len_delim_till_end:
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                               {parser_till_end, object}, size);
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool ServerConnected_GS::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:Gateway.ServerConnected_GS)
   for (;;) {
@@ -892,8 +1019,7 @@ bool ServerConnected_GS::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // .Gateway.ServerAttr server = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_server()));
         } else {
@@ -904,8 +1030,7 @@ bool ServerConnected_GS::MergePartialFromCodedStream(
 
       // bool connected = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -935,6 +1060,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void ServerConnected_GS::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -945,7 +1071,7 @@ void ServerConnected_GS::SerializeWithCachedSizes(
   // .Gateway.ServerAttr server = 1;
   if (this->has_server()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->_internal_server(), output);
+      1, HasBitSetters::server(this), output);
   }
 
   // bool connected = 2;
@@ -953,16 +1079,15 @@ void ServerConnected_GS::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->connected(), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:Gateway.ServerConnected_GS)
 }
 
 ::google::protobuf::uint8* ServerConnected_GS::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+    ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:Gateway.ServerConnected_GS)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -971,7 +1096,7 @@ void ServerConnected_GS::SerializeWithCachedSizes(
   if (this->has_server()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        1, this->_internal_server(), deterministic, target);
+        1, HasBitSetters::server(this), target);
   }
 
   // bool connected = 2;
@@ -979,9 +1104,9 @@ void ServerConnected_GS::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->connected(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:Gateway.ServerConnected_GS)
   return target;
@@ -991,11 +1116,15 @@ size_t ServerConnected_GS::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:Gateway.ServerConnected_GS)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // .Gateway.ServerAttr server = 1;
   if (this->has_server()) {
     total_size += 1 +
@@ -1017,9 +1146,9 @@ void ServerConnected_GS::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:Gateway.ServerConnected_GS)
   GOOGLE_DCHECK_NE(&from, this);
   const ServerConnected_GS* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const ServerConnected_GS>(
+      ::google::protobuf::DynamicCastToGenerated<ServerConnected_GS>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:Gateway.ServerConnected_GS)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
@@ -1067,14 +1196,14 @@ void ServerConnected_GS::Swap(ServerConnected_GS* other) {
 }
 void ServerConnected_GS::InternalSwap(ServerConnected_GS* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(server_, other->server_);
   swap(connected_, other->connected_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata ServerConnected_GS::GetMetadata() const {
-  protobuf_Gateway_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_Gateway_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_Gateway_2eproto);
+  return ::file_level_metadata_Gateway_2eproto[kIndexInFileMessages];
 }
 
 
@@ -1082,20 +1211,22 @@ void ServerConnected_GS::InternalSwap(ServerConnected_GS* other) {
 
 void MessageError_G::InitAsDefaultInstance() {
 }
+class MessageError_G::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int MessageError_G::kErrorFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 MessageError_G::MessageError_G()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_Gateway_2eproto::scc_info_MessageError_G.base);
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:Gateway.MessageError_G)
 }
 MessageError_G::MessageError_G(const MessageError_G& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   error_ = from.error_;
   // @@protoc_insertion_point(copy_constructor:Gateway.MessageError_G)
@@ -1116,13 +1247,8 @@ void MessageError_G::SharedDtor() {
 void MessageError_G::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* MessageError_G::descriptor() {
-  ::protobuf_Gateway_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_Gateway_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const MessageError_G& MessageError_G::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_Gateway_2eproto::scc_info_MessageError_G.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_MessageError_G_Gateway_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -1137,9 +1263,47 @@ void MessageError_G::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* MessageError_G::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<MessageError_G*>(object);
+  ::google::protobuf::int32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::uint32 tag;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // .Gateway.MessageError_G.ErrorType error = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val = ::google::protobuf::internal::ReadVarint(&ptr);
+        msg->set_error(static_cast<::Gateway::MessageError_G_ErrorType>(val));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->EndGroup(tag);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool MessageError_G::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:Gateway.MessageError_G)
   for (;;) {
@@ -1149,9 +1313,8 @@ bool MessageError_G::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // .Gateway.MessageError_G.ErrorType error = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-          int value;
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+          int value = 0;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
@@ -1181,6 +1344,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void MessageError_G::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -1194,16 +1358,15 @@ void MessageError_G::SerializeWithCachedSizes(
       1, this->error(), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:Gateway.MessageError_G)
 }
 
 ::google::protobuf::uint8* MessageError_G::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+    ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:Gateway.MessageError_G)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1214,9 +1377,9 @@ void MessageError_G::SerializeWithCachedSizes(
       1, this->error(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:Gateway.MessageError_G)
   return target;
@@ -1226,11 +1389,15 @@ size_t MessageError_G::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:Gateway.MessageError_G)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // .Gateway.MessageError_G.ErrorType error = 1;
   if (this->error() != 0) {
     total_size += 1 +
@@ -1246,9 +1413,9 @@ void MessageError_G::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:Gateway.MessageError_G)
   GOOGLE_DCHECK_NE(&from, this);
   const MessageError_G* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const MessageError_G>(
+      ::google::protobuf::DynamicCastToGenerated<MessageError_G>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:Gateway.MessageError_G)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
@@ -1293,13 +1460,13 @@ void MessageError_G::Swap(MessageError_G* other) {
 }
 void MessageError_G::InternalSwap(MessageError_G* other) {
   using std::swap;
-  swap(error_, other->error_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(error_, other->error_);
 }
 
 ::google::protobuf::Metadata MessageError_G::GetMetadata() const {
-  protobuf_Gateway_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_Gateway_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_Gateway_2eproto);
+  return ::file_level_metadata_Gateway_2eproto[kIndexInFileMessages];
 }
 
 
@@ -1307,21 +1474,23 @@ void MessageError_G::InternalSwap(MessageError_G* other) {
 
 void ClientConnected_GS::InitAsDefaultInstance() {
 }
+class ClientConnected_GS::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int ClientConnected_GS::kHashFieldNumber;
 const int ClientConnected_GS::kConnectedFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ClientConnected_GS::ClientConnected_GS()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_Gateway_2eproto::scc_info_ClientConnected_GS.base);
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:Gateway.ClientConnected_GS)
 }
 ClientConnected_GS::ClientConnected_GS(const ClientConnected_GS& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&hash_, &from.hash_,
     static_cast<size_t>(reinterpret_cast<char*>(&connected_) -
@@ -1346,13 +1515,8 @@ void ClientConnected_GS::SharedDtor() {
 void ClientConnected_GS::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* ClientConnected_GS::descriptor() {
-  ::protobuf_Gateway_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_Gateway_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const ClientConnected_GS& ClientConnected_GS::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_Gateway_2eproto::scc_info_ClientConnected_GS.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_ClientConnected_GS_Gateway_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -1369,9 +1533,53 @@ void ClientConnected_GS::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* ClientConnected_GS::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<ClientConnected_GS*>(object);
+  ::google::protobuf::int32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::uint32 tag;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // int32 hash = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        msg->set_hash(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // bool connected = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        msg->set_connected(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->EndGroup(tag);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool ClientConnected_GS::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:Gateway.ClientConnected_GS)
   for (;;) {
@@ -1381,8 +1589,7 @@ bool ClientConnected_GS::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // int32 hash = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -1395,8 +1602,7 @@ bool ClientConnected_GS::MergePartialFromCodedStream(
 
       // bool connected = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -1426,6 +1632,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void ClientConnected_GS::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -1443,16 +1650,15 @@ void ClientConnected_GS::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->connected(), output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:Gateway.ClientConnected_GS)
 }
 
 ::google::protobuf::uint8* ClientConnected_GS::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+    ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:Gateway.ClientConnected_GS)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1467,9 +1673,9 @@ void ClientConnected_GS::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->connected(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:Gateway.ClientConnected_GS)
   return target;
@@ -1479,11 +1685,15 @@ size_t ClientConnected_GS::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:Gateway.ClientConnected_GS)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // int32 hash = 1;
   if (this->hash() != 0) {
     total_size += 1 +
@@ -1505,9 +1715,9 @@ void ClientConnected_GS::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:Gateway.ClientConnected_GS)
   GOOGLE_DCHECK_NE(&from, this);
   const ClientConnected_GS* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const ClientConnected_GS>(
+      ::google::protobuf::DynamicCastToGenerated<ClientConnected_GS>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:Gateway.ClientConnected_GS)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
@@ -1555,14 +1765,14 @@ void ClientConnected_GS::Swap(ClientConnected_GS* other) {
 }
 void ClientConnected_GS::InternalSwap(ClientConnected_GS* other) {
   using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(hash_, other->hash_);
   swap(connected_, other->connected_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata ClientConnected_GS::GetMetadata() const {
-  protobuf_Gateway_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_Gateway_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_Gateway_2eproto);
+  return ::file_level_metadata_Gateway_2eproto[kIndexInFileMessages];
 }
 
 
@@ -1570,26 +1780,30 @@ void ClientConnected_GS::InternalSwap(ClientConnected_GS* other) {
 
 void AllConnectedServer_GS::InitAsDefaultInstance() {
 }
+class AllConnectedServer_GS::HasBitSetters {
+ public:
+};
+
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int AllConnectedServer_GS::kServerFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 AllConnectedServer_GS::AllConnectedServer_GS()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_Gateway_2eproto::scc_info_AllConnectedServer_GS.base);
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:Gateway.AllConnectedServer_GS)
 }
 AllConnectedServer_GS::AllConnectedServer_GS(const AllConnectedServer_GS& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+      _internal_metadata_(nullptr),
       server_(from.server_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:Gateway.AllConnectedServer_GS)
 }
 
 void AllConnectedServer_GS::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_AllConnectedServer_GS_Gateway_2eproto.base);
 }
 
 AllConnectedServer_GS::~AllConnectedServer_GS() {
@@ -1603,13 +1817,8 @@ void AllConnectedServer_GS::SharedDtor() {
 void AllConnectedServer_GS::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* AllConnectedServer_GS::descriptor() {
-  ::protobuf_Gateway_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_Gateway_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const AllConnectedServer_GS& AllConnectedServer_GS::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_Gateway_2eproto::scc_info_AllConnectedServer_GS.base);
+  ::google::protobuf::internal::InitSCC(&::scc_info_AllConnectedServer_GS_Gateway_2eproto.base);
   return *internal_default_instance();
 }
 
@@ -1624,9 +1833,58 @@ void AllConnectedServer_GS::Clear() {
   _internal_metadata_.Clear();
 }
 
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* AllConnectedServer_GS::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<AllConnectedServer_GS*>(object);
+  ::google::protobuf::int32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::uint32 tag;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // repeated .Gateway.ServerAttr server = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        do {
+          ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+          parser_till_end = ::Gateway::ServerAttr::_InternalParse;
+          object = msg->add_server();
+          if (size > end - ptr) goto len_delim_till_end;
+          ptr += size;
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
+              {parser_till_end, object}, ptr - size, ptr));
+          if (ptr >= end) break;
+        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 10 && (ptr += 1));
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->EndGroup(tag);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+len_delim_till_end:
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                               {parser_till_end, object}, size);
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool AllConnectedServer_GS::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:Gateway.AllConnectedServer_GS)
   for (;;) {
@@ -1636,8 +1894,7 @@ bool AllConnectedServer_GS::MergePartialFromCodedStream(
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // repeated .Gateway.ServerAttr server = 1;
       case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                 input, add_server()));
         } else {
@@ -1665,6 +1922,7 @@ failure:
   return false;
 #undef DO_
 }
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void AllConnectedServer_GS::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
@@ -1681,16 +1939,15 @@ void AllConnectedServer_GS::SerializeWithCachedSizes(
       output);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+        _internal_metadata_.unknown_fields(), output);
   }
   // @@protoc_insertion_point(serialize_end:Gateway.AllConnectedServer_GS)
 }
 
 ::google::protobuf::uint8* AllConnectedServer_GS::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+    ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:Gateway.AllConnectedServer_GS)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1700,12 +1957,12 @@ void AllConnectedServer_GS::SerializeWithCachedSizes(
       n = static_cast<unsigned int>(this->server_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        1, this->server(static_cast<int>(i)), deterministic, target);
+        1, this->server(static_cast<int>(i)), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:Gateway.AllConnectedServer_GS)
   return target;
@@ -1715,11 +1972,15 @@ size_t AllConnectedServer_GS::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:Gateway.AllConnectedServer_GS)
   size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+        _internal_metadata_.unknown_fields());
   }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .Gateway.ServerAttr server = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->server_size());
@@ -1740,9 +2001,9 @@ void AllConnectedServer_GS::MergeFrom(const ::google::protobuf::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:Gateway.AllConnectedServer_GS)
   GOOGLE_DCHECK_NE(&from, this);
   const AllConnectedServer_GS* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const AllConnectedServer_GS>(
+      ::google::protobuf::DynamicCastToGenerated<AllConnectedServer_GS>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:Gateway.AllConnectedServer_GS)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
@@ -1785,13 +2046,13 @@ void AllConnectedServer_GS::Swap(AllConnectedServer_GS* other) {
 }
 void AllConnectedServer_GS::InternalSwap(AllConnectedServer_GS* other) {
   using std::swap;
-  CastToBase(&server_)->InternalSwap(CastToBase(&other->server_));
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  CastToBase(&server_)->InternalSwap(CastToBase(&other->server_));
 }
 
 ::google::protobuf::Metadata AllConnectedServer_GS::GetMetadata() const {
-  protobuf_Gateway_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_Gateway_2eproto::file_level_metadata[kIndexInFileMessages];
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_Gateway_2eproto);
+  return ::file_level_metadata_Gateway_2eproto[kIndexInFileMessages];
 }
 
 
@@ -1799,25 +2060,26 @@ void AllConnectedServer_GS::InternalSwap(AllConnectedServer_GS* other) {
 }  // namespace Gateway
 namespace google {
 namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Gateway::ServerAttr* Arena::CreateMaybeMessage< ::Gateway::ServerAttr >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::Gateway::ServerAttr* Arena::CreateMaybeMessage< ::Gateway::ServerAttr >(Arena* arena) {
   return Arena::CreateInternal< ::Gateway::ServerAttr >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Gateway::ServerRegister_SG* Arena::CreateMaybeMessage< ::Gateway::ServerRegister_SG >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::Gateway::ServerRegister_SG* Arena::CreateMaybeMessage< ::Gateway::ServerRegister_SG >(Arena* arena) {
   return Arena::CreateInternal< ::Gateway::ServerRegister_SG >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Gateway::ServerConnected_GS* Arena::CreateMaybeMessage< ::Gateway::ServerConnected_GS >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::Gateway::ServerConnected_GS* Arena::CreateMaybeMessage< ::Gateway::ServerConnected_GS >(Arena* arena) {
   return Arena::CreateInternal< ::Gateway::ServerConnected_GS >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Gateway::MessageError_G* Arena::CreateMaybeMessage< ::Gateway::MessageError_G >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::Gateway::MessageError_G* Arena::CreateMaybeMessage< ::Gateway::MessageError_G >(Arena* arena) {
   return Arena::CreateInternal< ::Gateway::MessageError_G >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Gateway::ClientConnected_GS* Arena::CreateMaybeMessage< ::Gateway::ClientConnected_GS >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::Gateway::ClientConnected_GS* Arena::CreateMaybeMessage< ::Gateway::ClientConnected_GS >(Arena* arena) {
   return Arena::CreateInternal< ::Gateway::ClientConnected_GS >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Gateway::AllConnectedServer_GS* Arena::CreateMaybeMessage< ::Gateway::AllConnectedServer_GS >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::Gateway::AllConnectedServer_GS* Arena::CreateMaybeMessage< ::Gateway::AllConnectedServer_GS >(Arena* arena) {
   return Arena::CreateInternal< ::Gateway::AllConnectedServer_GS >(arena);
 }
 }  // namespace protobuf
 }  // namespace google
 
 // @@protoc_insertion_point(global_scope)
+#include <google/protobuf/port_undef.inc>

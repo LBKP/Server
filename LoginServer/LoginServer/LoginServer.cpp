@@ -73,10 +73,14 @@ void LoginServer::onClientConnected(const muduo::net::TcpConnectionPtr& conn, co
 
 void LoginServer::onClientLogin(const muduo::net::TcpConnectionPtr& conn, const int hash, const std::shared_ptr <Login::ClientLogin_CL>& message, muduo::Timestamp)
 {
-	//if(message->sessionid() /*!= 0*/)
-	//{
+	if(message->sessionid().empty())
+	{
 
-	//}
+	}
+	else
+	{
+
+	}
 }
 
 void LoginServer::onServerConnectedGateway(const muduo::net::TcpConnectionPtr & conn, const int hash, const std::shared_ptr<Gateway::ServerConnected_GS>& message, muduo::Timestamp)
@@ -88,6 +92,7 @@ void LoginServer::onServerConnectedGateway(const muduo::net::TcpConnectionPtr & 
 	}
 	else
 	{
+		//remove disconnected server from ServerMap_
 		if (ServerMap_.find(message->server().type()) != ServerMap_.end())
 		{
 			ServerMap_[message->server().type()].remove_if(
