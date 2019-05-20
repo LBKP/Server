@@ -61,10 +61,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
     <UseOfStl>libstdc++_static</UseOfStl>
+    <RemoteRootDir>/home/lbkp/server</RemoteRootDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
     <UseOfStl>libstdc++_static</UseOfStl>
+    <RemoteRootDir>/home/lbkp/server</RemoteRootDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
@@ -78,15 +80,17 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>/home/ubuntu/build/release-install-cpp17/include;$(IncludePath)</IncludePath>
-    <ProjectPublicIncludePath>/home/ubuntu/build/debug-install-cpp17/include</ProjectPublicIncludePath>
+    <IncludePath>/home/lbkp/build/debug-install-cpp17/include;$(IncludePath)</IncludePath>
+    <ProjectPublicIncludePath>/home/lbkp/build/debug-cpp17/include</ProjectPublicIncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)\</IntDir>
+    <RemoteProjectDir>/home/lbkp/server</RemoteProjectDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>/home/ubuntu/build/release-install-cpp17/include;$(IncludePath)</IncludePath>
-    <LibraryPath>/home/ubuntu/build/release-install-cpp17/lib</LibraryPath>
+    <IncludePath>/home/lbkp/build/release-install-cpp17/include;$(IncludePath)</IncludePath>
+    <LibraryPath>/home/lbkp/build/release-install-cpp17/lib</LibraryPath>
+    <RemoteProjectDir>/home/lbkp/server</RemoteProjectDir>
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="..\publlic\Codec.cpp" />
@@ -103,6 +107,7 @@
     <ClInclude Include="Server\GatewayServer.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Gateway.cfg" />
     <None Include="Server\Gateway.proto" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -121,14 +126,14 @@
     <Link>
       <LibraryDependencies>protobuf;muduo_net;muduo_wss;muduo_base;pthread;dl;ssl;crypto;z;</LibraryDependencies>
       <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(Link.AdditionalLibraryDirectories);/root//build/release-install-cpp17/lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(Link.AdditionalLibraryDirectories);/home/lbkp/build/debug-cpp17/lib</AdditionalLibraryDirectories>
       <VerboseOutput>false</VerboseOutput>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
       <LibraryDependencies>muduo_base;muduo_net;pthread;ssl;</LibraryDependencies>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);/usr/local/lib/libcrypto.so</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);</AdditionalDependencies>
     </Link>
     <ClCompile>
       <CppLanguageStandard>c++17</CppLanguageStandard>

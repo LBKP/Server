@@ -68,5 +68,6 @@
     <None Include="LoginServer\Message\Login.proto">
       <Filter>Server\Message</Filter>
     </None>
+    <None Include="Login.cfg" />
   </ItemGroup>
 </Project>

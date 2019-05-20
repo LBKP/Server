@@ -78,11 +78,11 @@ private:
 
 	//server status
 	void printServerStatus();
-private:
+private: 
 	//recive all connection
 	muduo::net::wss::WebSocketServer websocketServer_;
 	muduo::net::TcpServer tcpServer_;
-	muduo::net::EventLoop* loop_;
+	muduo::net::EventLoop* loop_;  
 
 	//manage all connection
 	muduo::MutexLock mutex_;

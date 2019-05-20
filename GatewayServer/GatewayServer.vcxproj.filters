@@ -44,5 +44,6 @@
     <None Include="Server\Gateway.proto">
       <Filter>Server</Filter>
     </None>
+    <None Include="Gateway.cfg" />
   </ItemGroup>
 </Project>
