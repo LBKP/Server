@@ -1,0 +1,30 @@
+syntax = "proto3";
+package proto;
+
+enum UserInfo {
+    string userName = 1;
+    int64 gendor = 2;   //0:girl、1:boy
+}
+enum RoomInfo{
+
+}
+//user login game
+message LoginRequest{
+   int64 userID =1;
+}
+
+message LoginResponse{
+    UserInfo userInfo = 1;
+    int32 result=3;
+}
+
+//user create room
+message CreateRequest{
+    uint64 gameID = 1;
+}
+
+message CreateResponse{
+    int32 result = 1;  //0:成功
+    string failReson = 2; //失败原因
+    RoomInfo roomInfo = 3;
+}
